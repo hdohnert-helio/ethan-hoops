@@ -716,6 +716,44 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .tip-text strong { display: block; font-size: 12px; font-weight: 700; color: var(--tip-strong); margin-bottom: 2px; }
 .tip-text p { font-size: 11px; color: var(--tip-p); line-height: 1.4; }
 
+/* ─── SHOOTING HISTORY ──────────────────────────────────────────────────────── */
+.history-section { padding: 0 16px 16px; }
+.history-toggle {
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; padding: 12px 16px;
+  background: var(--beef-toggle-bg);
+  border: 1.5px solid var(--beef-toggle-border);
+  border-radius: 12px; margin-bottom: 0; transition: all 0.2s;
+  box-shadow: var(--card-shadow);
+}
+.history-toggle:hover { background: var(--card-bg-hover); }
+.history-toggle span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-faint); }
+.history-toggle .arr { font-size: 11px; color: var(--text-dim); transition: transform 0.2s; }
+.history-toggle.open .arr { transform: rotate(180deg); }
+.history-body {
+  overflow: hidden; max-height: 0; transition: max-height 0.3s ease;
+  background: var(--beef-card-bg);
+  border: 1.5px solid var(--beef-card-border);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+}
+.history-body.open { max-height: 600px; overflow-y: auto; }
+.history-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--tip-row-border);
+  font-size: 12px;
+}
+.history-row:last-child { border-bottom: none; }
+.history-date { color: var(--text-sub); font-weight: 600; min-width: 46px; flex-shrink: 0; }
+.history-phase { color: var(--text-muted); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
+.history-makes { color: var(--text); font-weight: 600; white-space: nowrap; flex-shrink: 0; font-size: 11px; }
+.history-pct { font-weight: 700; font-size: 12px; min-width: 36px; text-align: right; flex-shrink: 0; }
+.history-pct.green { color: #06D6A0; }
+.history-pct.orange { color: #FFD23F; }
+.history-pct.red { color: #E63946; }
+.history-empty { padding: 18px 14px; color: var(--text-dim); font-size: 12px; text-align: center; letter-spacing: 0.5px; }
+
 /* ─── CONFETTI ──────────────────────────────────────────────────────────────── */
 #confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 999; display: none; }
 
@@ -838,6 +876,16 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
         <span class="pr-label">🏆 Personal Record (session)</span>
         <span class="pr-val" id="pr-val">—</span>
       </div>
+    </div>
+  </div>
+
+  <div class="history-section">
+    <div class="history-toggle" id="history-toggle" onclick="toggleHistory()">
+      <span>📊 Shooting History</span>
+      <span class="arr">▼</span>
+    </div>
+    <div class="history-body" id="history-body">
+      <div id="history-list"><div class="history-empty">No sessions logged yet</div></div>
     </div>
   </div>
 
@@ -1039,10 +1087,11 @@ let expandedDrill = null;
 let timerInterval = null, timerRunning = false, timerSeconds = 0, timerTotal = 0, timerDrillIdx = 0;
 let shotMakes = 0, shotAttempts = 0, shotHistory = [];
 let beefOpen = false;
+let historyOpen = false;
 let saveTimeout = null;
 
 function defaultData() {
-  return { completed: {}, practiceDays: [], sessionBest: {}, bestStreak: 0 };
+  return { completed: {}, practiceDays: [], sessionBest: {}, bestStreak: 0, shotLog: [] };
 }
 
 // ─── THEME ─────────────────────────────────────────────────────────────────
@@ -1085,6 +1134,10 @@ async function loadData() {
   if (local) {
     try { const parsed = JSON.parse(local); playerData = {...playerData, ...parsed}; } catch(e){}
   }
+  // ensure shotLog exists for all players (backward compat)
+  for (const p of Object.keys(playerData)) {
+    if (!playerData[p].shotLog) playerData[p].shotLog = [];
+  }
 }
 
 async function saveData() {
@@ -1108,6 +1161,20 @@ async function saveData() {
 }
 
 // ─── PLAYER SELECT ──────────────────────────────────────────────────────────
+function restoreSessionFromLog() {
+  const today = new Date().toISOString().slice(0,10);
+  const log = pd().shotLog || [];
+  const entry = log.find(e => e.date === today && e.week === activeWeek && e.day === activeDay);
+  if (entry) {
+    shotMakes = entry.makes;
+    shotAttempts = entry.attempts;
+  } else {
+    shotMakes = 0;
+    shotAttempts = 0;
+  }
+  shotHistory = [];
+}
+
 function selectPlayer(p) {
   currentPlayer = p;
   document.getElementById('player-screen').style.display = 'none';
@@ -1117,6 +1184,7 @@ function selectPlayer(p) {
   document.getElementById('player-name-title').textContent = pl.name;
   document.getElementById('player-icon').textContent = pl.icon;
   document.documentElement.style.setProperty('--wc', pl.color);
+  restoreSessionFromLog();
   renderAll();
 }
 
@@ -1137,6 +1205,7 @@ function renderAll() {
   renderProgress();
   renderStreak();
   updateShotDisplay();
+  renderHistory();
 }
 
 function renderWeekTabs() {
@@ -1248,8 +1317,8 @@ function renderStreak() {
 // ─── INTERACTIONS ────────────────────────────────────────────────────────────
 function dKey(w,d,dr) { return `${w}-${d}-${dr}`; }
 
-function selectWeek(i) { activeWeek=i; activeDay=0; expandedDrill=null; stopTimer(); renderAll(); }
-function selectDay(i) { activeDay=i; expandedDrill=null; stopTimer(); renderDrills(); renderDayTabs(); renderProgress(); if(!timerRunning) setTimerDrill(0); }
+function selectWeek(i) { activeWeek=i; activeDay=0; expandedDrill=null; stopTimer(); restoreSessionFromLog(); renderAll(); }
+function selectDay(i) { activeDay=i; expandedDrill=null; stopTimer(); restoreSessionFromLog(); renderDrills(); renderDayTabs(); renderProgress(); renderHistory(); if(!timerRunning) setTimerDrill(0); }
 
 function drillExpand(i) {
   expandedDrill = expandedDrill===i ? null : i;
@@ -1354,6 +1423,20 @@ function playBeep() {
 }
 
 // ─── SHOT TRACKER ───────────────────────────────────────────────────────────
+function upsertShotLog() {
+  const today = new Date().toISOString().slice(0,10);
+  if (!pd().shotLog) pd().shotLog = [];
+  const log = pd().shotLog;
+  const idx = log.findIndex(e => e.date === today && e.week === activeWeek && e.day === activeDay);
+  const pct = shotAttempts > 0 ? Math.round((shotMakes / shotAttempts) * 100) : 0;
+  const w = WEEKS[activeWeek];
+  const entry = { date: today, week: activeWeek, day: activeDay, makes: shotMakes, attempts: shotAttempts, pct,
+    phaseLabel: w.theme, dayLabel: WEEKS[activeWeek].days[activeDay].label };
+  if (idx >= 0) { log[idx] = entry; } else { log.push(entry); }
+  saveData();
+  renderHistory();
+}
+
 function recordShot(make) {
   shotAttempts++;
   if (make) shotMakes++;
@@ -1368,7 +1451,6 @@ function recordShot(make) {
   }
   updateShotDisplay();
   // check PR
-  const today = new Date().toISOString().slice(0,10);
   const prKey = `${activeWeek}-${activeDay}`;
   if (!pd().sessionBest) pd().sessionBest = {};
   const curBest = pd().sessionBest[prKey] || 0;
@@ -1376,9 +1458,9 @@ function recordShot(make) {
     const pct = Math.round((shotMakes/shotAttempts)*100);
     if (shotAttempts >= 5 && pct > curBest) {
       pd().sessionBest[prKey] = pct;
-      saveData();
     }
   }
+  upsertShotLog();
   updateShotDisplay();
 }
 
@@ -1398,6 +1480,45 @@ function updateShotDisplay() {
   const prKey = `${activeWeek}-${activeDay}`;
   const best = pd()?.sessionBest?.[prKey];
   document.getElementById('pr-val').textContent = best ? best+'%' : '—';
+}
+
+// ─── SHOOTING HISTORY ───────────────────────────────────────────────────────
+function formatHistoryDate(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function renderHistory() {
+  const el = document.getElementById('history-list');
+  if (!el) return;
+  const log = (pd().shotLog || []).filter(e => e.attempts > 0);
+  if (!log.length) {
+    el.innerHTML = '<div class="history-empty">No sessions logged yet</div>';
+    return;
+  }
+  // most recent first, limit 20
+  const sorted = [...log].sort((a, b) => {
+    if (b.date !== a.date) return b.date.localeCompare(a.date);
+    if (b.week !== a.week) return b.week - a.week;
+    return b.day - a.day;
+  }).slice(0, 20);
+  el.innerHTML = sorted.map(e => {
+    const pctClass = e.pct >= 50 ? 'green' : e.pct >= 30 ? 'orange' : 'red';
+    const phaseLabel = e.phaseLabel || WEEKS[e.week]?.theme || `Phase ${e.week + 1}`;
+    const dayLabel = e.dayLabel || WEEKS[e.week]?.days[e.day]?.label || `Day ${e.day + 1}`;
+    return `<div class="history-row">
+      <span class="history-date">${formatHistoryDate(e.date)}</span>
+      <span class="history-phase">${phaseLabel} · ${dayLabel}</span>
+      <span class="history-makes">${e.makes}/${e.attempts}</span>
+      <span class="history-pct ${pctClass}">${e.pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+function toggleHistory() {
+  historyOpen = !historyOpen;
+  document.getElementById('history-toggle').className = 'history-toggle' + (historyOpen ? ' open' : '');
+  document.getElementById('history-body').className = 'history-body' + (historyOpen ? ' open' : '');
 }
 
 // ─── BEEF TOGGLE ────────────────────────────────────────────────────────────
