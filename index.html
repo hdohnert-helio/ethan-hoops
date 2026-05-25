@@ -1611,8 +1611,18 @@ function renderHistory() {
 
 function deleteHistoryEntry(date, week, day) {
   pd().shotLog = (pd().shotLog || []).filter(e => !(e.date===date && e.week===week && e.day===day));
+  // recalculate PR for this week/day from remaining entries
+  const prKey = `${week}-${day}`;
+  const remaining = (pd().shotLog || []).filter(e => e.week===week && e.day===day && e.attempts >= 5);
+  if (!pd().sessionBest) pd().sessionBest = {};
+  if (remaining.length) {
+    pd().sessionBest[prKey] = Math.max(...remaining.map(e => e.pct));
+  } else {
+    delete pd().sessionBest[prKey];
+  }
   saveData();
   renderHistory();
+  updateShotDisplay();
 }
 
 function toggleHistory() {
