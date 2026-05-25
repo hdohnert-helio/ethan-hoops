@@ -17,12 +17,12 @@
   --ta: #FFD23F;
 
   /* Dark theme defaults */
-  --bg: #08080f;
+  --bg: #07070f;
   --bg2: #0f0f1a;
   --card-bg: rgba(255,255,255,0.04);
   --card-bg-hover: rgba(255,255,255,0.07);
-  --card-border: rgba(255,255,255,0.07);
-  --card-border-hover: rgba(255,255,255,0.14);
+  --card-border: rgba(255,255,255,0.08);
+  --card-border-hover: rgba(255,255,255,0.18);
   --card-shadow: none;
   --text: #ffffff;
   --text-muted: rgba(255,255,255,0.4);
@@ -30,8 +30,7 @@
   --text-faint: rgba(255,255,255,0.3);
   --text-sub: rgba(255,255,255,0.5);
   --text-soft: rgba(255,255,255,0.35);
-  --header-bg: radial-gradient(ellipse at 50% 0%, #1a0830 0%, #08080f 80%);
-  --player-screen-bg: radial-gradient(ellipse at 50% 30%, #1a0830 0%, #08080f 70%);
+  --header-bg: transparent;
   --section-hdr: rgba(255,255,255,0.3);
   --streak-bg: rgba(255,210,63,0.12);
   --streak-border: rgba(255,210,63,0.25);
@@ -42,12 +41,12 @@
   --tip-bg: rgba(255,255,255,0.04);
   --done-card-bg: rgba(255,255,255,0.02);
   --done-card-border: rgba(255,255,255,0.04);
-  --timer-bar-bg: rgba(255,255,255,0.06);
-  --timer-bar-border: rgba(255,255,255,0.1);
+  --timer-bar-bg: rgba(255,255,255,0.04);
+  --timer-bar-border: rgba(255,255,255,0.08);
   --timer-prog-bg: rgba(255,255,255,0.07);
   --shot-box-bg: rgba(255,255,255,0.04);
   --shot-box-border: rgba(255,255,255,0.08);
-  --shot-stat-bg: rgba(255,255,255,0.04);
+  --shot-stat-bg: rgba(255,255,255,0.06);
   --sbtn-miss-bg: rgba(255,255,255,0.08);
   --sbtn-miss-hover: rgba(255,255,255,0.13);
   --sbtn-miss-color: rgba(255,255,255,0.5);
@@ -76,10 +75,6 @@
   --tbtn-next-color: rgba(255,255,255,0.6);
   --tbtn-reset-hover: rgba(255,255,255,0.14);
   --tbtn-next-hover: rgba(255,255,255,0.14);
-  --wtab-bg: rgba(255,255,255,0.05);
-  --wtab-border: rgba(255,255,255,0.08);
-  --wtab-hover-bg: rgba(255,255,255,0.09);
-  --wtab-active-bg: rgba(255,255,255,0.08);
   --drill-tip-bg: rgba(255,255,255,0.04);
   --drill-expand-color: rgba(255,255,255,0.25);
   --check-ring-border: rgba(255,255,255,0.18);
@@ -87,27 +82,24 @@
   --video-btn-border: rgba(255,107,53,0.3);
   --video-btn-color: #FF6B35;
   --phase-p-color: rgba(255,255,255,0.5);
-  --bg-gradient-a: #08080f;
-  --bg-gradient-b: #0d0d22;
-  --bg-gradient-c: #100810;
+  --drill-num-opacity: 0.18;
 }
 
 [data-theme="light"] {
-  --bg: #F5F7FA;
-  --bg2: #EEF2F7;
+  --bg: #F0F4F8;
+  --bg2: #E6ECF3;
   --card-bg: #FFFFFF;
   --card-bg-hover: #F8FAFC;
   --card-border: rgba(0,0,0,0.08);
-  --card-border-hover: rgba(255,107,53,0.35);
-  --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --card-border-hover: rgba(0,0,0,0.18);
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.07);
   --text: #1a1a2e;
   --text-muted: rgba(26,26,46,0.5);
   --text-dim: rgba(26,26,46,0.35);
   --text-faint: rgba(26,26,46,0.45);
   --text-sub: rgba(26,26,46,0.55);
   --text-soft: rgba(26,26,46,0.45);
-  --header-bg: linear-gradient(180deg, #E8EDF5 0%, #F5F7FA 100%);
-  --player-screen-bg: radial-gradient(ellipse at 50% 30%, #DDE4F0 0%, #EEF2F7 70%);
+  --header-bg: transparent;
   --section-hdr: #4a5568;
   --streak-bg: rgba(255,210,63,0.18);
   --streak-border: rgba(255,210,63,0.4);
@@ -152,10 +144,6 @@
   --tbtn-next-color: rgba(26,26,46,0.6);
   --tbtn-reset-hover: rgba(0,0,0,0.12);
   --tbtn-next-hover: rgba(0,0,0,0.12);
-  --wtab-bg: #FFFFFF;
-  --wtab-border: rgba(0,0,0,0.08);
-  --wtab-hover-bg: rgba(255,107,53,0.06);
-  --wtab-active-bg: rgba(255,107,53,0.08);
   --drill-tip-bg: rgba(0,0,0,0.03);
   --drill-expand-color: rgba(26,26,46,0.3);
   --check-ring-border: rgba(0,0,0,0.18);
@@ -163,29 +151,12 @@
   --video-btn-border: rgba(255,107,53,0.35);
   --video-btn-color: #CC4400;
   --phase-p-color: rgba(26,26,46,0.5);
-  --bg-gradient-a: #F5F7FA;
-  --bg-gradient-b: #EEF2F7;
-  --bg-gradient-c: #E8EDF5;
+  --drill-num-opacity: 0.12;
 }
 
-/* ─── ANIMATED GRADIENT BG ─────────────────────────────────────────────────── */
-@keyframes bgShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
+/* ─── BASE ──────────────────────────────────────────────────────────────────── */
 body {
   background: var(--bg);
-  background: linear-gradient(
-    135deg,
-    var(--bg-gradient-a) 0%,
-    var(--bg-gradient-b) 40%,
-    var(--bg-gradient-c) 60%,
-    var(--bg-gradient-a) 100%
-  );
-  background-size: 400% 400%;
-  animation: bgShift 18s ease infinite;
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
@@ -194,6 +165,9 @@ body {
 }
 
 button { cursor:pointer;border:none;background:none;color:inherit;font-family:inherit; }
+button:active { transform: scale(0.96); }
+a { transition: 0.18s ease; }
+* { transition: background-color 0.18s ease, border-color 0.18s ease; }
 
 /* ─── THEME TOGGLE ──────────────────────────────────────────────────────────── */
 .theme-toggle {
@@ -214,27 +188,23 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
   background: var(--card-bg-hover);
   transform: rotate(20deg) scale(1.1);
 }
+.theme-toggle:active { transform: scale(0.96) rotate(10deg); }
 
-/* ─── FLOATING BASKETBALLS (player select) ──────────────────────────────────── */
+/* ─── FLOATING BASKETBALLS ──────────────────────────────────────────────────── */
 @keyframes floatBall1 {
-  0%   { transform: translateY(0px) rotate(0deg); opacity: 0.06; }
-  50%  { transform: translateY(-40px) rotate(180deg); opacity: 0.1; }
-  100% { transform: translateY(0px) rotate(360deg); opacity: 0.06; }
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-40px) rotate(180deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
 }
 @keyframes floatBall2 {
-  0%   { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
-  60%  { transform: translateY(-60px) rotate(240deg); opacity: 0.09; }
-  100% { transform: translateY(0px) rotate(360deg); opacity: 0.05; }
+  0%   { transform: translateY(0px) rotate(0deg); }
+  60%  { transform: translateY(-60px) rotate(240deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
 }
 @keyframes floatBall3 {
-  0%   { transform: translateY(0px) rotate(0deg); opacity: 0.04; }
-  40%  { transform: translateY(-30px) rotate(120deg); opacity: 0.08; }
-  100% { transform: translateY(0px) rotate(360deg); opacity: 0.04; }
-}
-@keyframes floatBall4 {
-  0%   { transform: translateY(0px) rotate(0deg); opacity: 0.07; }
-  55%  { transform: translateY(-50px) rotate(200deg); opacity: 0.11; }
-  100% { transform: translateY(0px) rotate(360deg); opacity: 0.07; }
+  0%   { transform: translateY(0px) rotate(0deg); }
+  40%  { transform: translateY(-30px) rotate(120deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
 }
 
 .bg-ball {
@@ -242,127 +212,157 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  opacity: 0.06;
 }
-.bg-ball:nth-child(1) { font-size: 80px; top: 8%; left: 5%;  animation: floatBall1 7s ease-in-out infinite; }
-.bg-ball:nth-child(2) { font-size: 120px; top: 60%; right: 4%; animation: floatBall2 9s ease-in-out infinite 1.5s; }
-.bg-ball:nth-child(3) { font-size: 55px;  top: 40%; left: 15%; animation: floatBall3 6s ease-in-out infinite 0.8s; }
-.bg-ball:nth-child(4) { font-size: 95px;  bottom: 10%; left: 50%; animation: floatBall4 11s ease-in-out infinite 2s; }
+.bg-ball:nth-child(1) { font-size: 90px;  top: 8%;  left: 5%;  animation: floatBall1 7s ease-in-out infinite; }
+.bg-ball:nth-child(2) { font-size: 130px; top: 60%; right: 4%; animation: floatBall2 9s ease-in-out infinite 1.5s; }
+.bg-ball:nth-child(3) { font-size: 60px;  top: 40%; left: 15%; animation: floatBall3 6s ease-in-out infinite 0.8s; }
 
-/* ─── PLAYER SELECT ─────────────────────────────────────────────────────────── */
+/* ─── PLAYER SELECT SCREEN ──────────────────────────────────────────────────── */
 #player-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #07070f;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.ps-who {
+  position: absolute;
+  top: 32px;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 3px;
+  opacity: 0.4;
+  text-transform: uppercase;
+  color: #fff;
+  z-index: 10;
+  pointer-events: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+.ps-theme-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+}
+
+/* Two half zones */
+.ps-half {
+  flex: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 24px;
-  background: var(--player-screen-bg);
-  position: relative;
+  cursor: pointer;
   overflow: hidden;
+  min-height: 100vh;
 }
-.player-select-top {
+
+.ps-half-ethan {
+  clip-path: polygon(0 0, 60% 0, 40% 100%, 0 100%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.22) 0%, rgba(7,7,15,0.0) 70%);
+}
+
+.ps-half-justin {
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.22) 0%, rgba(7,7,15,0.0) 70%);
+}
+
+/* Diagonal overlap strip for visual continuity */
+.ps-divider {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%) skewX(-15deg);
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
+  z-index: 5;
+  pointer-events: none;
 }
-.player-title {
+
+.ps-watermark {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 200px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.ps-half-ethan .ps-watermark {
+  color: #FF6B35;
+  opacity: 0.05;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ps-half-justin .ps-watermark {
+  color: #3B82F6;
+  opacity: 0.05;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ps-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  /* nudge ethan left, justin right */
+}
+.ps-half-ethan .ps-content { transform: translateX(-18%); }
+.ps-half-justin .ps-content { transform: translateX(18%); }
+
+.ps-emoji { font-size: 48px; line-height: 1; }
+.ps-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 52px;
   letter-spacing: 4px;
-  text-align: center;
   line-height: 1;
-  position: relative;
-  z-index: 1;
 }
-.player-title span { color: #FF6B35; text-shadow: 0 0 40px #FF6B3566; }
-.player-sub {
-  color: var(--text-muted);
-  font-size: 13px;
-  text-align: center;
-  margin: 10px 0 40px;
+.ps-half-ethan .ps-name { color: #FF6B35; text-shadow: 0 0 40px rgba(255,107,53,0.4); }
+.ps-half-justin .ps-name { color: #3B82F6; text-shadow: 0 0 40px rgba(59,130,246,0.4); }
+.ps-badge {
+  font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  position: relative;
-  z-index: 1;
+  opacity: 0.4;
+  color: #fff;
+  font-weight: 600;
 }
-.player-cards {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  max-width: 340px;
-  position: relative;
-  z-index: 1;
-}
-.player-card {
-  flex: 1;
-  background: var(--card-bg);
-  border: 1.5px solid var(--card-border);
-  border-radius: 20px;
-  padding: 28px 16px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--card-shadow);
-}
-.player-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--pc)22, transparent);
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-.player-card:hover { transform: translateY(-4px); border-color: var(--pc); }
-.player-card:hover::before { opacity: 1; }
-.player-card .p-emoji { font-size: 48px; display: block; margin-bottom: 12px; }
-.player-card .p-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; }
-.player-card .p-badge { font-size: 11px; color: var(--text-muted); margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
 
 /* ─── MAIN APP ──────────────────────────────────────────────────────────────── */
-#app { display: none; min-height: 100vh; }
+#app { display: none; min-height: 100vh; padding-bottom: 24px; }
 
+/* ─── APP HEADER ────────────────────────────────────────────────────────────── */
 .app-header {
   background: var(--header-bg);
-  padding: 20px 16px 0;
+  padding: 16px 16px 0;
   position: relative;
-  overflow: hidden;
   transition: background 0.4s;
 }
-[data-theme="dark"] .app-header::before {
-  content: '';
-  position: absolute;
-  top: -60px; left: 50%;
-  transform: translateX(-50%);
-  width: 260px; height: 180px;
-  border: 1.5px solid rgba(255,107,53,0.12);
-  border-radius: 0 0 130px 130px;
-  border-top: none;
-}
-[data-theme="dark"] .app-header::after {
-  content: '';
-  position: absolute;
-  top: -30px; left: 50%;
-  transform: translateX(-50%);
-  width: 140px; height: 100px;
-  border: 1.5px solid rgba(255,107,53,0.08);
-  border-radius: 0 0 70px 70px;
-  border-top: none;
-}
+
+/* Row 1: player pill + theme toggle */
 .header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
-  gap: 8px;
+  margin-bottom: 12px;
 }
-.header-top-left { display: flex; align-items: center; gap: 8px; }
 .player-switcher {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: var(--switcher-bg);
   border: 1px solid var(--switcher-border);
   border-radius: 20px;
@@ -373,105 +373,119 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .player-switcher:hover { background: var(--card-bg-hover); }
 .player-switcher span {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--text-sub);
 }
-.streak-badge {
+
+/* Row 2: week pills */
+.week-pills-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.week-pills-row::-webkit-scrollbar { display: none; }
+
+.wpill {
+  flex-shrink: 0;
+  min-width: 36px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid var(--card-border);
+  background: var(--card-bg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s;
   display: flex;
   align-items: center;
-  gap: 5px;
-  background: var(--streak-bg);
-  border: 1px solid var(--streak-border);
-  border-radius: 20px;
-  padding: 6px 12px;
+  justify-content: center;
+  position: relative;
+  padding: 0 8px;
 }
-.streak-badge span { font-size: 13px; font-weight: 700; color: #FFD23F; }
-.app-title { text-align: center; padding-bottom: 20px; }
-.app-title h1 { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 3px; line-height: 1; }
-.app-title h1 em { color: var(--wc); font-style: normal; text-shadow: 0 0 30px var(--wc); }
-.app-title p { font-size: 12px; color: var(--text-soft); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
-
-/* ─── WEEK PROGRESS ─────────────────────────────────────────────────────────── */
-.week-progress { padding: 0 16px 16px; }
-.prog-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.prog-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-faint); }
-.prog-pct { font-size: 13px; font-weight: 700; color: var(--wc); }
-.prog-bar { background: var(--prog-bar-bg); border-radius: 4px; height: 5px; overflow: hidden; }
-.prog-fill { height: 100%; background: linear-gradient(90deg, var(--wc), var(--wa)); border-radius: 4px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
-
-/* ─── WEEK TABS ─────────────────────────────────────────────────────────────── */
-@keyframes tabPulse {
-  0%   { box-shadow: 0 0 0 0 var(--tc); }
-  50%  { box-shadow: 0 0 0 4px color-mix(in srgb, var(--tc) 20%, transparent); }
-  100% { box-shadow: 0 0 0 0 var(--tc); }
-}
-.week-tabs { display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: auto auto; gap: 6px; padding: 0 16px 16px; }
-.wtab {
-  background: var(--wtab-bg);
-  border: 1.5px solid var(--wtab-border);
-  border-radius: 10px;
-  padding: 7px 4px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.2s;
-  box-shadow: var(--card-shadow);
-}
-.wtab:hover { background: var(--wtab-hover-bg); transform: translateY(-1px); }
-.wtab.active {
+.wpill:hover { border-color: var(--tc); color: var(--text); }
+.wpill.active {
+  background: var(--tc);
   border-color: var(--tc);
-  background: var(--wtab-active-bg);
-  animation: tabPulse 2s ease-in-out infinite;
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--tc) 40%, transparent);
 }
-.wtab .wt-emoji { font-size: 16px; line-height: 1; }
-.wtab .wt-label { font-size: 8px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-faint); margin-top: 3px; }
-.wtab.active .wt-label { color: var(--tc); }
+.wpill .wpill-check {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 13px;
+  height: 13px;
+  background: #06D6A0;
+  border-radius: 50%;
+  font-size: 7px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  border: 1.5px solid var(--bg);
+}
 
-/* ─── PHASE BANNER ──────────────────────────────────────────────────────────── */
-@keyframes borderGlow {
-  0%   { box-shadow: 0 0 8px 0 color-mix(in srgb, var(--tc) 30%, transparent),  inset 0 0 12px 0 color-mix(in srgb, var(--tc) 8%, transparent); }
-  50%  { box-shadow: 0 0 22px 4px color-mix(in srgb, var(--tc) 40%, transparent), inset 0 0 20px 0 color-mix(in srgb, var(--tc) 14%, transparent); }
-  100% { box-shadow: 0 0 8px 0 color-mix(in srgb, var(--tc) 30%, transparent),  inset 0 0 12px 0 color-mix(in srgb, var(--tc) 8%, transparent); }
-}
-.phase-banner {
-  margin: 0 16px 16px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--tc) 22%, transparent), color-mix(in srgb, var(--ta) 8%, transparent));
-  border: 2px solid color-mix(in srgb, var(--tc) 50%, transparent);
-  border-radius: 18px;
-  padding: 18px 22px;
+/* Row 3: phase label */
+.phase-label-row {
   text-align: center;
-  animation: borderGlow 3s ease-in-out infinite;
-  transition: all 0.4s;
-}
-.phase-banner h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 34px;
-  letter-spacing: 3px;
+  padding: 6px 0 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
   color: var(--tc);
-  text-shadow: 0 0 24px color-mix(in srgb, var(--tc) 50%, transparent);
 }
-.phase-banner p { font-size: 12px; color: var(--phase-p-color); margin-top: 4px; letter-spacing: 0.5px; }
 
-/* ─── DAY TABS ──────────────────────────────────────────────────────────────── */
-.day-tabs { display: flex; gap: 8px; justify-content: center; padding: 0 16px 16px; }
-.dtab {
-  padding: 8px 22px;
-  border-radius: 30px;
-  border: 1.5px solid var(--dtab-border);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--dtab-color);
-  transition: all 0.2s;
-  background: transparent;
+/* ─── SLIM PROGRESS BAR ─────────────────────────────────────────────────────── */
+.slim-prog {
+  width: 100%;
+  height: 3px;
+  background: var(--prog-bar-bg);
+  overflow: hidden;
 }
+.slim-prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tc), var(--ta));
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── DAY TABS — segmented control ─────────────────────────────────────────── */
+.day-tabs {
+  display: flex;
+  padding: 12px 16px 12px;
+  gap: 0;
+}
+.dtab {
+  flex: 1;
+  padding: 9px 6px;
+  border: 1.5px solid var(--dtab-border);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dtab-color);
+  transition: all 0.18s;
+  background: transparent;
+  text-align: center;
+}
+.dtab:first-child { border-radius: 10px 0 0 10px; }
+.dtab:last-child  { border-radius: 0 10px 10px 0; }
+.dtab:not(:first-child) { border-left: none; }
 .dtab:hover { background: var(--dtab-hover-bg); color: var(--text); }
 .dtab.active { background: var(--tc); border-color: var(--tc); color: #fff; }
 .dtab.done-day { border-color: var(--done-day-border); color: var(--done-day-color); }
-.dtab.done-day::after { content: '✓'; margin-left: 5px; opacity: 0.7; }
+.dtab.done-day::after { content: ' ✓'; opacity: 0.7; }
 
 /* ─── DRILLS ────────────────────────────────────────────────────────────────── */
-.drills-section { padding: 0 16px 16px; }
+.drills-section { padding: 0 16px 12px; }
 .section-hdr {
   font-size: 10px;
   font-weight: 700;
@@ -489,69 +503,111 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 
 .drill-card {
   background: var(--card-bg);
-  border: 1.5px solid var(--card-border);
+  border: 1px solid var(--card-border);
   border-radius: 14px;
-  padding: 14px 14px;
+  padding: 13px 13px 13px 10px;
   margin-bottom: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.18s;
   position: relative;
   overflow: hidden;
   box-shadow: var(--card-shadow);
-}
-.drill-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--tc);
-  border-radius: 3px 0 0 3px;
-  opacity: 0;
-  transition: opacity 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 .drill-card:hover {
   background: var(--card-bg-hover);
   border-color: var(--card-border-hover);
-  box-shadow: 0 0 18px 2px color-mix(in srgb, var(--tc) 18%, transparent), var(--card-shadow);
   transform: translateY(-1px);
 }
-.drill-card.done { background: var(--done-card-bg); border-color: var(--done-card-border); }
-.drill-card.done::before, .drill-card:hover::before { opacity: 1; }
+.drill-card.done {
+  background: var(--done-card-bg);
+  border-color: var(--done-card-border);
+  opacity: 0.75;
+}
 
-.drill-top { display: flex; align-items: center; gap: 10px; }
+.drill-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Drill number on left */
+.drill-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  line-height: 1;
+  width: 44px;
+  flex-shrink: 0;
+  text-align: center;
+  color: var(--tc);
+  opacity: var(--drill-num-opacity);
+}
+
+.drill-info { flex: 1; min-width: 0; }
+.drill-name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  transition: color 0.18s, opacity 0.18s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.drill-card.done .drill-name {
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+
+.drill-dur {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--tc);
+  background: color-mix(in srgb, var(--tc) 15%, transparent);
+  padding: 2px 8px;
+  border-radius: 16px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.drill-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.drill-expand { font-size: 10px; color: var(--drill-expand-color); margin-top: 4px; text-align: right; letter-spacing: 1px; }
+
+/* Check ring — right side of card */
 .check-ring {
-  width: 26px; height: 26px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 2px solid var(--check-ring-border);
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  font-size: 12px;
-  transition: all 0.2s;
+  font-size: 14px;
+  transition: all 0.18s;
   background: transparent;
+  margin-left: auto;
 }
-.check-ring.checked { background: var(--tc); border-color: var(--tc); color: #fff; }
-.drill-info { flex: 1; }
-.drill-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; transition: color 0.2s; }
-.drill-card.done .drill-name { color: var(--text-muted); }
-.drill-dur {
-  font-size: 11px; font-weight: 700; color: var(--tc);
-  background: color-mix(in srgb, var(--tc) 15%, transparent);
-  padding: 3px 9px; border-radius: 16px; white-space: nowrap;
+.check-ring.checked {
+  background: var(--tc);
+  border-color: var(--tc);
+  color: #fff;
 }
+
 .drill-tip {
   font-size: 12px;
   color: var(--text-sub);
-  line-height: 1.45;
-  margin-top: 8px;
-  padding: 8px 10px;
+  line-height: 1.5;
+  margin-top: 10px;
+  padding: 10px 12px;
   background: var(--drill-tip-bg);
   border-radius: 8px;
+  border-left: 3px solid var(--tc);
+  font-style: italic;
   display: none;
 }
 .drill-card.expanded .drill-tip { display: block; }
-.drill-expand { font-size: 10px; color: var(--drill-expand-color); margin-top: 6px; text-align: right; letter-spacing: 1px; }
 
-/* Video watch button */
 .drill-video-link {
   display: inline-block;
   margin-top: 8px;
@@ -562,9 +618,10 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
   color: var(--video-btn-color);
   font-size: 11px;
   font-weight: 700;
+  font-style: normal;
   letter-spacing: 0.5px;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.18s;
 }
 .drill-video-link:hover {
   background: color-mix(in srgb, var(--tc) 25%, transparent);
@@ -572,60 +629,141 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 }
 
 /* ─── TIMER ─────────────────────────────────────────────────────────────────── */
-@keyframes timerGlow {
-  0%   { text-shadow: 0 0 10px color-mix(in srgb, var(--tc) 40%, transparent); }
-  50%  { text-shadow: 0 0 28px color-mix(in srgb, var(--tc) 65%, transparent); }
-  100% { text-shadow: 0 0 10px color-mix(in srgb, var(--tc) 40%, transparent); }
-}
 .timer-bar {
   background: var(--timer-bar-bg);
   border: 1px solid var(--timer-bar-border);
-  border-radius: 14px;
-  padding: 16px;
-  margin: 0 16px 16px;
+  border-radius: 16px;
+  padding: 20px 16px;
+  margin: 0 16px 12px;
   box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.timer-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-soft); margin-bottom: 8px; text-align: center; }
-.timer-display {
+
+/* SVG ring wrapper */
+.timer-ring-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 12px;
+}
+.timer-ring-wrap svg { transform: rotate(-90deg); }
+.timer-digits {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-  letter-spacing: 3px;
-  text-align: center;
+  font-size: 44px;
+  letter-spacing: 2px;
   color: var(--text);
-  line-height: 1;
-  transition: color 0.3s, text-shadow 0.3s;
+  transition: color 0.3s;
 }
-.timer-display.urgent { color: #FF6B35; text-shadow: 0 0 20px #FF6B3555; }
-.timer-display.running { animation: timerGlow 1.8s ease-in-out infinite; color: var(--tc); }
-.timer-name { font-size: 13px; color: var(--text-sub); text-align: center; margin-bottom: 12px; min-height: 18px; }
-.timer-btns { display: flex; gap: 8px; justify-content: center; }
-.tbtn { padding: 10px 20px; border-radius: 10px; font-size: 13px; font-weight: 700; letter-spacing: 1px; transition: all 0.2s; }
-.tbtn-start { background: var(--tc); color: #fff; }
+.timer-digits.urgent { color: #FF6B35; }
+.timer-digits.running { color: var(--tc); }
+
+.timer-name {
+  font-size: 13px;
+  color: var(--text-sub);
+  text-align: center;
+  margin-bottom: 16px;
+  min-height: 18px;
+}
+
+.timer-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.tbtn {
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.18s;
+}
+.tbtn-start { background: var(--tc); color: #fff; min-width: 80px; }
 .tbtn-start:hover { filter: brightness(1.15); }
 .tbtn-reset { background: var(--tbtn-reset-bg); color: var(--tbtn-reset-color); }
 .tbtn-reset:hover { background: var(--tbtn-reset-hover); }
 .tbtn-next  { background: var(--tbtn-next-bg);  color: var(--tbtn-next-color); }
 .tbtn-next:hover  { background: var(--tbtn-next-hover); }
-.timer-prog { background: var(--timer-prog-bg); height: 3px; border-radius: 2px; margin-top: 12px; overflow: hidden; }
-.timer-prog-fill { height: 100%; background: linear-gradient(90deg, var(--tc), var(--ta)); border-radius: 2px; transition: width 0.5s linear; }
 
 /* ─── SHOT TRACKER ──────────────────────────────────────────────────────────── */
-.shot-section { padding: 0 16px 16px; }
+.shot-section { padding: 0 16px 12px; }
 .shot-box {
   background: var(--shot-box-bg);
-  border: 1.5px solid var(--shot-box-border);
+  border: 1px solid var(--shot-box-border);
   border-radius: 16px;
-  padding: 16px;
+  padding: 20px 16px 14px;
   box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.shot-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-.shot-stat { text-align: center; background: var(--shot-stat-bg); border-radius: 10px; padding: 10px 6px; }
-.shot-stat .ss-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--tc); }
-.shot-stat .ss-lbl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-soft); margin-top: 2px; }
-.shot-btns { display: flex; gap: 8px; }
-.sbtn { flex: 1; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; transition: all 0.18s; text-align: center; position: relative; overflow: hidden; }
 
-/* MAKE ripple */
+/* SVG donut */
+.shot-ring-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 14px;
+}
+.shot-ring-wrap svg { transform: rotate(-90deg); }
+.shot-pct-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+/* Two stats side by side */
+.shot-stats-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 14px;
+}
+.shot-stat-item { text-align: center; }
+.shot-stat-item .ss-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--tc);
+}
+.shot-stat-item .ss-lbl {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+
+.shot-btns {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.sbtn {
+  flex: 1;
+  padding: 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.18s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
 @keyframes ripple {
   to { transform: scale(4); opacity: 0; }
 }
@@ -643,21 +781,41 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .sbtn-make.rippling::after { animation: ripple 0.5s ease-out forwards; }
 
 .sbtn-make { background: linear-gradient(135deg, #06D6A0, #00a878); color: #fff; }
-.sbtn-make:hover { filter: brightness(1.12); transform: scale(1.02); }
+.sbtn-make:hover { filter: brightness(1.12); }
 .sbtn-miss { background: var(--sbtn-miss-bg); color: var(--sbtn-miss-color); }
 .sbtn-miss:hover { background: var(--sbtn-miss-hover); }
-.sbtn-undo { background: var(--sbtn-undo-bg); color: var(--sbtn-undo-color); padding: 12px 14px; flex: 0; }
-.pr-row { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--pr-border); }
+
+.sbtn-undo-wrap { text-align: center; margin-top: 8px; }
+.sbtn-undo-link {
+  font-size: 11px;
+  color: var(--sbtn-undo-color);
+  cursor: pointer;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  transition: color 0.18s;
+}
+.sbtn-undo-link:hover { color: var(--text-muted); }
+
+.pr-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--pr-border);
+  width: 100%;
+}
 .pr-label { font-size: 11px; color: var(--text-soft); letter-spacing: 1px; }
 .pr-val { font-size: 12px; font-weight: 700; color: #FFD23F; }
 
 /* ─── STREAK CALENDAR ───────────────────────────────────────────────────────── */
-.streak-section { padding: 0 16px 16px; }
+.streak-section { padding: 0 16px 12px; }
 .streak-box {
   background: var(--shot-box-bg);
-  border: 1.5px solid var(--shot-box-border);
+  border: 1px solid var(--shot-box-border);
   border-radius: 16px;
-  padding: 16px;
+  padding: 14px;
   box-shadow: var(--card-shadow);
 }
 .streak-months { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
@@ -677,13 +835,13 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .si-lbl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-faint); }
 
 /* ─── BEEF ──────────────────────────────────────────────────────────────────── */
-.beef-section { padding: 0 16px 16px; }
+.beef-section { padding: 0 16px 12px; }
 .beef-toggle {
   display: flex; justify-content: space-between; align-items: center;
   cursor: pointer; padding: 12px 16px;
   background: var(--beef-toggle-bg);
-  border: 1.5px solid var(--beef-toggle-border);
-  border-radius: 12px; margin-bottom: 0; transition: all 0.2s;
+  border: 1px solid var(--beef-toggle-border);
+  border-radius: 12px; transition: all 0.18s;
   box-shadow: var(--card-shadow);
 }
 .beef-toggle:hover { background: var(--card-bg-hover); }
@@ -694,7 +852,7 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .beef-grid.open { max-height: 400px; }
 .beef-card {
   background: var(--beef-card-bg);
-  border: 1.5px solid var(--beef-card-border);
+  border: 1px solid var(--beef-card-border);
   border-radius: 12px; padding: 14px 12px; text-align: center;
   box-shadow: var(--card-shadow);
 }
@@ -703,10 +861,10 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .beef-desc { font-size: 11px; color: var(--text-sub); line-height: 1.4; }
 
 /* ─── PARENT TIPS ───────────────────────────────────────────────────────────── */
-.tips-section { padding: 0 16px 16px; }
+.tips-section { padding: 0 16px 12px; }
 .tips-box {
   background: var(--tips-box-bg);
-  border: 1.5px solid var(--tips-box-border);
+  border: 1px solid var(--tips-box-border);
   border-radius: 16px; overflow: hidden;
   box-shadow: var(--card-shadow);
 }
@@ -717,13 +875,13 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .tip-text p { font-size: 11px; color: var(--tip-p); line-height: 1.4; }
 
 /* ─── SHOOTING HISTORY ──────────────────────────────────────────────────────── */
-.history-section { padding: 0 16px 16px; }
+.history-section { padding: 0 16px 12px; }
 .history-toggle {
   display: flex; justify-content: space-between; align-items: center;
   cursor: pointer; padding: 12px 16px;
   background: var(--beef-toggle-bg);
-  border: 1.5px solid var(--beef-toggle-border);
-  border-radius: 12px; margin-bottom: 0; transition: all 0.2s;
+  border: 1px solid var(--beef-toggle-border);
+  border-radius: 12px; transition: all 0.18s;
   box-shadow: var(--card-shadow);
 }
 .history-toggle:hover { background: var(--card-bg-hover); }
@@ -733,7 +891,7 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 .history-body {
   overflow: hidden; max-height: 0; transition: max-height 0.3s ease;
   background: var(--beef-card-bg);
-  border: 1.5px solid var(--beef-card-border);
+  border: 1px solid var(--beef-card-border);
   border-top: none;
   border-radius: 0 0 12px 12px;
 }
@@ -743,11 +901,12 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
   padding: 10px 14px;
   border-bottom: 1px solid var(--tip-row-border);
   font-size: 12px;
+  font-variant-numeric: tabular-nums;
 }
 .history-row:last-child { border-bottom: none; }
-.history-date { color: var(--text-sub); font-weight: 600; min-width: 46px; flex-shrink: 0; }
+.history-date { color: var(--text-sub); font-weight: 700; min-width: 46px; flex-shrink: 0; font-family: 'DM Sans', monospace; }
 .history-phase { color: var(--text-muted); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
-.history-makes { color: var(--text); font-weight: 600; white-space: nowrap; flex-shrink: 0; font-size: 11px; }
+.history-makes { color: var(--text); font-weight: 700; white-space: nowrap; flex-shrink: 0; font-size: 11px; font-family: 'DM Sans', monospace; }
 .history-pct { font-weight: 700; font-size: 12px; min-width: 36px; text-align: right; flex-shrink: 0; }
 .history-pct.green { color: #06D6A0; }
 .history-pct.orange { color: #FFD23F; }
@@ -772,109 +931,168 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 }
 .session-toast.show { transform: translateX(-50%) translateY(0); }
 .footer { text-align: center; padding: 12px 20px 32px; font-size: 11px; color: var(--footer-color); letter-spacing: 1px; }
+
+/* streak badge in header */
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--streak-bg);
+  border: 1px solid var(--streak-border);
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.streak-badge .streak-num { font-weight: 700; color: #FFD23F; }
 </style>
 </head>
 <body>
 
+<!-- ═══════════════ PLAYER SELECT SCREEN ════════════════ -->
 <div id="player-screen">
   <!-- Floating basketballs -->
   <span class="bg-ball" aria-hidden="true">🏀</span>
   <span class="bg-ball" aria-hidden="true">🏀</span>
   <span class="bg-ball" aria-hidden="true">🏀</span>
-  <span class="bg-ball" aria-hidden="true">🏀</span>
 
-  <!-- Theme toggle on player select screen -->
-  <div class="player-select-top">
+  <div class="ps-who">WHO'S TRAINING TODAY?</div>
+
+  <div class="ps-theme-btn">
     <button class="theme-toggle" id="theme-toggle-select" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
   </div>
 
-  <div class="player-title">🏀 RISE<br/><span>UP</span></div>
-  <div class="player-sub">Who's training today?</div>
-  <div class="player-cards">
-    <div class="player-card" style="--pc:#FF6B35" onclick="selectPlayer('ethan')">
-      <span class="p-emoji">⚡</span>
-      <div class="p-name" style="color:#FF6B35">ETHAN</div>
-      <div class="p-badge">Player 1</div>
+  <!-- Ethan half -->
+  <div class="ps-half ps-half-ethan" onclick="selectPlayer('ethan')">
+    <span class="ps-watermark" aria-hidden="true">E</span>
+    <div class="ps-content">
+      <span class="ps-emoji">⚡</span>
+      <div class="ps-name">ETHAN</div>
+      <div class="ps-badge">PLAYER 1</div>
     </div>
-    <div class="player-card" style="--pc:#3B82F6" onclick="selectPlayer('justin')">
-      <span class="p-emoji">🔥</span>
-      <div class="p-name" style="color:#3B82F6">JUSTIN</div>
-      <div class="p-badge">Player 2</div>
+  </div>
+
+  <div class="ps-divider" aria-hidden="true"></div>
+
+  <!-- Justin half -->
+  <div class="ps-half ps-half-justin" onclick="selectPlayer('justin')">
+    <span class="ps-watermark" aria-hidden="true">J</span>
+    <div class="ps-content">
+      <span class="ps-emoji">🔥</span>
+      <div class="ps-name">JUSTIN</div>
+      <div class="ps-badge">PLAYER 2</div>
     </div>
   </div>
 </div>
 
+<!-- ═══════════════ MAIN APP ════════════════════════════ -->
 <div id="app">
   <canvas id="confetti-canvas"></canvas>
   <div class="session-toast" id="toast">🎉 Session Complete! Keep grinding!</div>
 
+  <!-- Header -->
   <div class="app-header">
+    <!-- Row 1: player pill + theme toggle -->
     <div class="header-top">
-      <div class="header-top-left">
-        <button class="player-switcher" onclick="backToSelect()">
-          <span id="player-icon">⚡</span>
-          <span id="player-name-hdr">ETHAN</span>
-          <span style="font-size:10px;opacity:0.4;margin-left:2px">▾</span>
-        </button>
-      </div>
+      <button class="player-switcher" onclick="backToSelect()">
+        <span id="player-icon">⚡</span>
+        <span id="player-name-hdr">ETHAN</span>
+        <span style="font-size:10px;opacity:0.4;margin-left:2px">▾</span>
+      </button>
       <div class="streak-badge">
         <span>🔥</span>
-        <span id="streak-count">0</span>
-        <span style="font-size:10px;color:rgba(255,255,255,0.4);font-weight:500"> day streak</span>
+        <span class="streak-num" id="streak-count">0</span>
+        <span style="font-size:10px;opacity:0.5;font-weight:500"> streak</span>
       </div>
       <button class="theme-toggle" id="theme-toggle-app" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
     </div>
-    <div class="app-title">
-      <h1>RISE <em id="player-name-title">ETHAN</em></h1>
-      <p>CYO Prep · 8 Weeks · 3 Days/Week</p>
-    </div>
-    <div class="week-progress">
-      <div class="prog-row">
-        <span class="prog-label" id="prog-label">Week 1 Progress</span>
-        <span class="prog-pct" id="prog-pct">0%</span>
-      </div>
-      <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
-    </div>
-    <div class="week-tabs" id="week-tabs"></div>
+
+    <!-- Row 2: week pills -->
+    <div class="week-pills-row" id="week-tabs"></div>
+
+    <!-- Row 3: phase label -->
+    <div class="phase-label-row" id="phase-label-row">WEEK 1 · BALL HANDLING BASICS</div>
   </div>
 
-  <div id="phase-banner" class="phase-banner">
-    <h2 id="phase-name"></h2>
-    <p id="phase-tagline"></p>
-  </div>
+  <!-- Slim progress bar -->
+  <div class="slim-prog"><div class="slim-prog-fill" id="prog-fill" style="width:0%"></div></div>
 
+  <!-- Day tabs -->
   <div class="day-tabs" id="day-tabs"></div>
 
+  <!-- Timer -->
   <div class="timer-bar">
-    <div class="timer-label">Drill Timer</div>
-    <div class="timer-display" id="timer-display">00:00</div>
+    <div class="timer-ring-wrap">
+      <svg width="160" height="160" viewBox="0 0 160 160">
+        <!-- background ring -->
+        <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+        <!-- progress ring -->
+        <circle id="timer-ring-progress" cx="80" cy="80" r="72"
+          fill="none"
+          stroke="var(--tc)"
+          stroke-width="6"
+          stroke-linecap="round"
+          stroke-dasharray="452.4"
+          stroke-dashoffset="0"
+          style="transition: stroke-dashoffset 0.5s linear, stroke 0.4s ease;"/>
+      </svg>
+      <div class="timer-digits" id="timer-display">00:00</div>
+    </div>
     <div class="timer-name" id="timer-drill-name">Select a drill to start</div>
     <div class="timer-btns">
       <button class="tbtn tbtn-start" id="tbtn-start" onclick="timerStartStop()">START</button>
       <button class="tbtn tbtn-reset" onclick="timerReset()">RESET</button>
       <button class="tbtn tbtn-next" onclick="timerNextDrill()">NEXT ›</button>
     </div>
-    <div class="timer-prog"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
   </div>
 
+  <!-- Drills -->
   <div class="drills-section">
     <div class="section-hdr" id="drill-section-hdr">Today's Drills</div>
     <div id="drill-list"></div>
   </div>
 
+  <!-- Shot Tracker -->
   <div class="shot-section">
     <div class="section-hdr">🎯 Shot Tracker</div>
     <div class="shot-box">
-      <div class="shot-stats">
-        <div class="shot-stat"><div class="ss-val" id="st-makes">0</div><div class="ss-lbl">Makes</div></div>
-        <div class="shot-stat"><div class="ss-val" id="st-attempts">0</div><div class="ss-lbl">Attempts</div></div>
-        <div class="shot-stat"><div class="ss-val" id="st-pct">—</div><div class="ss-lbl">%</div></div>
+      <!-- donut -->
+      <div class="shot-ring-wrap">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+          <circle id="shot-ring-progress" cx="60" cy="60" r="52"
+            fill="none"
+            stroke="#06D6A0"
+            stroke-width="10"
+            stroke-linecap="round"
+            stroke-dasharray="326.7"
+            stroke-dashoffset="326.7"
+            style="transition: stroke-dashoffset 0.4s ease;"/>
+        </svg>
+        <div class="shot-pct-text" id="st-pct">—</div>
       </div>
+
+      <!-- Two stats -->
+      <div class="shot-stats-row">
+        <div class="shot-stat-item">
+          <div class="ss-val" id="st-makes">0</div>
+          <div class="ss-lbl">Makes</div>
+        </div>
+        <div class="shot-stat-item">
+          <div class="ss-val" id="st-attempts">0</div>
+          <div class="ss-lbl">Attempts</div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
       <div class="shot-btns">
         <button class="sbtn sbtn-make" id="sbtn-make" onclick="recordShot(true)">✓ MAKE</button>
         <button class="sbtn sbtn-miss" onclick="recordShot(false)">✗ MISS</button>
-        <button class="sbtn sbtn-undo" onclick="undoShot()">↩</button>
       </div>
+      <div class="sbtn-undo-wrap">
+        <button class="sbtn-undo-link" onclick="undoShot()">↩ undo last</button>
+      </div>
+
+      <!-- PR row -->
       <div class="pr-row">
         <span class="pr-label">🏆 Personal Record (session)</span>
         <span class="pr-val" id="pr-val">—</span>
@@ -882,6 +1100,7 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
     </div>
   </div>
 
+  <!-- Shooting History -->
   <div class="history-section">
     <div class="history-toggle" id="history-toggle" onclick="toggleHistory()">
       <span>📊 Shooting History</span>
@@ -892,6 +1111,7 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
     </div>
   </div>
 
+  <!-- Streak Calendar -->
   <div class="streak-section">
     <div class="section-hdr">📅 Practice Streak</div>
     <div class="streak-box">
@@ -904,6 +1124,7 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
     </div>
   </div>
 
+  <!-- BEEF -->
   <div class="beef-section">
     <div class="section-hdr">🍪 The BEEF Formula</div>
     <div class="beef-toggle" id="beef-toggle" onclick="toggleBeef()">
@@ -918,6 +1139,7 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
     </div>
   </div>
 
+  <!-- Parent Tips -->
   <div class="tips-section">
     <div class="section-hdr">📋 Parent Reminders</div>
     <div class="tips-box">
@@ -936,55 +1158,43 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 // ─── DRILL VIDEO LOOKUP ────────────────────────────────────────────────────
 function getDrillVideo(name) {
   const n = name.toLowerCase();
-  // Layups (check before generic dribble)
   if (n.includes('layup') || n.includes('lay up') || n.includes('lay-up')) {
     if (n.includes('full speed') || n.includes('dribble +') || n.includes('lines')) {
-      return 'https://www.youtube.com/watch?v=wQClsdt4jI4'; // Full Court Layups - youth
+      return 'https://www.youtube.com/watch?v=wQClsdt4jI4';
     }
-    return 'https://www.youtube.com/watch?v=YYLvlPQgPrs'; // How To Teach The Lay Up - youth 5 min
+    return 'https://www.youtube.com/watch?v=YYLvlPQgPrs';
   }
-  // Stationary dribbling
   if (n.includes('stationary dribbl')) {
-    return 'https://www.youtube.com/watch?v=1zRQwaN96rk'; // 17 Stationary Dribbling Drills - Youth to Pros
+    return 'https://www.youtube.com/watch?v=1zRQwaN96rk';
   }
-  // Figure-8
   if (n.includes('figure') || n.includes('figure-8') || n.includes('figure 8')) {
-    return 'https://www.youtube.com/watch?v=-vafClV92A4'; // Figure 8 Dribble - Beginner Ball Handling
+    return 'https://www.youtube.com/watch?v=-vafClV92A4';
   }
-  // BEEF shooting
   if (n.includes('beef')) {
-    return 'https://www.youtube.com/watch?v=jtS8Sv48f1Q'; // Youth Basketball - BEEF Shooting
+    return 'https://www.youtube.com/watch?v=jtS8Sv48f1Q';
   }
-  // Free throws
   if (n.includes('free throw') || n.includes('free-throw')) {
-    return 'https://www.youtube.com/watch?v=lnuZNZPDvaY'; // Fundamentals Of The Free Throw - Jr. NBA
+    return 'https://www.youtube.com/watch?v=lnuZNZPDvaY';
   }
-  // One-hand / form shooting
   if (n.includes('one-hand') || n.includes('one hand') || n.includes('form shoot') || n.includes('form (close)')) {
-    return 'https://www.youtube.com/watch?v=drjHBtMgbF4'; // One Hand Form Shot - PSB Drills & Skills
+    return 'https://www.youtube.com/watch?v=drjHBtMgbF4';
   }
-  // Dribble into shot / pull-up / dribble + shot combo
   if (n.includes('dribble into') || n.includes('pull-up') || n.includes('dribble + shot') || n.includes('dribble+shot')) {
-    return 'https://www.youtube.com/watch?v=4Ytt9DOK1sQ'; // 2 Dribble Pull Up Shooting Drills
+    return 'https://www.youtube.com/watch?v=4Ytt9DOK1sQ';
   }
-  // Pivot
   if (n.includes('pivot')) {
-    return 'https://www.youtube.com/watch?v=YyU3FuPMzeU'; // YOUTH PIVOTING DRILLS - 3 Drills to Avoid Traveling
+    return 'https://www.youtube.com/watch?v=YyU3FuPMzeU';
   }
-  // Ball handling warmup / full warmup / dribbling combos / dribble walks
   if (n.includes('warmup') || n.includes('warm up') || n.includes('dribble walk') || n.includes('dribbling combo') || n.includes('full skill') || n.includes('full warmup')) {
-    return 'https://www.youtube.com/watch?v=UVAz2aASZx4'; // 7 Best Youth Basketball Dribbling Drills
+    return 'https://www.youtube.com/watch?v=UVAz2aASZx4';
   }
-  // Mid-range / beat yesterday / make 5 game
   if (n.includes('mid-range') || n.includes('mid range') || n.includes('beat yesterday') || n.includes('make 5') || n.includes('shot combo')) {
-    return 'https://www.youtube.com/watch?v=EztEhywHzko'; // 5 Beginner Basketball Shooting Drills
+    return 'https://www.youtube.com/watch?v=EztEhywHzko';
   }
-  // 1-on-1 / free throw challenge / free throw challenge
   if (n.includes('1-on-1') || n.includes('challenge')) {
-    return 'https://www.youtube.com/watch?v=lnuZNZPDvaY'; // Free throw fundamentals
+    return 'https://www.youtube.com/watch?v=lnuZNZPDvaY';
   }
-  // Default: general youth dribbling/skills
-  return 'https://www.youtube.com/watch?v=UVAz2aASZx4'; // 7 Best Youth Basketball Dribbling Drills
+  return 'https://www.youtube.com/watch?v=UVAz2aASZx4';
 }
 
 // ─── DATA ──────────────────────────────────────────────────────────────────
@@ -1221,12 +1431,10 @@ async function loadData() {
       playerData = { ethan: defaultData(), justin: defaultData(), ...content };
     }
   } catch(e) { console.log('Load failed, using local', e); }
-  // fallback to localStorage
   const local = localStorage.getItem('riseup-data');
   if (local) {
     try { const parsed = JSON.parse(local); playerData = {...playerData, ...parsed}; } catch(e){}
   }
-  // ensure shotLog exists for all players (backward compat)
   for (const p of Object.keys(playerData)) {
     if (!playerData[p].shotLog) playerData[p].shotLog = [];
   }
@@ -1237,7 +1445,6 @@ async function saveData() {
   clearTimeout(saveTimeout);
   saveTimeout = setTimeout(async () => {
     try {
-      // get current sha
       const res = await fetch(`${API}/github/content?repo=${GH_REPO}&path=data/progress.json`, {
         headers:{'x-app-pass':'HelioSolar2026'}
       });
@@ -1273,7 +1480,6 @@ function selectPlayer(p) {
   document.getElementById('app').style.display = 'block';
   const pl = PLAYERS[p];
   document.getElementById('player-name-hdr').textContent = pl.name;
-  document.getElementById('player-name-title').textContent = pl.name;
   document.getElementById('player-icon').textContent = pl.icon;
   document.documentElement.style.setProperty('--wc', pl.color);
   restoreSessionFromLog();
@@ -1302,22 +1508,25 @@ function renderAll() {
 
 function renderWeekTabs() {
   const el = document.getElementById('week-tabs');
-  el.innerHTML = WEEKS.map((w,i) => `
-    <div class="wtab${i===activeWeek?' active':''}" style="--tc:${w.color}" onclick="selectWeek(${i})">
-      <div class="wt-emoji">${w.emoji}</div>
-      <div class="wt-label">${w.label}</div>
-    </div>`).join('');
+  el.innerHTML = WEEKS.map((w, i) => {
+    const isActive = i === activeWeek;
+    // check if whole week complete
+    const totalDrills = w.days.reduce((s,d) => s + d.drills.length, 0);
+    const doneDrills  = w.days.reduce((s,d,di) => s + d.drills.filter((_,dri) => pd().completed[dKey(i,di,dri)]).length, 0);
+    const weekDone = totalDrills > 0 && doneDrills === totalDrills;
+    return `<button class="wpill${isActive?' active':''}" style="--tc:${w.color}" onclick="selectWeek(${i})">
+      W${i+1}
+      ${weekDone ? '<span class="wpill-check">✓</span>' : ''}
+    </button>`;
+  }).join('');
 }
 
 function renderPhase() {
   const w = WEEKS[activeWeek];
-  document.getElementById('phase-banner').style.setProperty('--tc', w.color);
-  document.getElementById('phase-banner').style.setProperty('--ta', w.accent);
-  document.getElementById('phase-name').textContent = `Week ${activeWeek + 1} · ${w.theme}`;
-  document.getElementById('phase-tagline').textContent = w.tagline;
-  // timer color
   document.documentElement.style.setProperty('--tc', w.color);
   document.documentElement.style.setProperty('--ta', w.accent);
+  // Update timer ring stroke color via CSS var (already uses var(--tc))
+  document.getElementById('phase-label-row').textContent = `WEEK ${activeWeek + 1} · ${w.theme.toUpperCase()}`;
 }
 
 function renderDayTabs() {
@@ -1334,35 +1543,35 @@ function renderDrills() {
   const totalMin = drills.reduce((s,d)=>s+d.dur,0);
   document.getElementById('drill-section-hdr').textContent = `Today's Drills — ${totalMin} min total`;
   const el = document.getElementById('drill-list');
-  // Re-trigger animation by cloning
   el.style.animation = 'none';
-  el.offsetHeight; // reflow
+  el.offsetHeight;
   el.style.animation = '';
   el.innerHTML = drills.map((d,i) => {
     const done = !!pd().completed[dKey(activeWeek,activeDay,i)];
     const expanded = expandedDrill === i;
     const videoUrl = getDrillVideo(d.name);
+    const num = String(i+1).padStart(2,'0');
     return `<div class="drill-card${done?' done':''}${expanded?' expanded':''}" onclick="drillExpand(${i})">
       <div class="drill-top">
-        <div class="check-ring${done?' checked':''}" onclick="event.stopPropagation();markDrillDone(${i})">
-          ${done?'✓':''}
-        </div>
+        <div class="drill-num">${num}</div>
         <div class="drill-info">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <div class="drill-meta">
             <div class="drill-name">${d.icon} ${d.name}</div>
             <div class="drill-dur">${d.dur} min</div>
           </div>
-          <div class="drill-expand">${expanded?'▲ hide tip':'▾ show tip'}</div>
+          <div class="drill-expand">${expanded?'▲ hide tip':'▾ tip'}</div>
+        </div>
+        <div class="check-ring${done?' checked':''}" onclick="event.stopPropagation();markDrillDone(${i})">
+          ${done?'✓':''}
         </div>
       </div>
       <div class="drill-tip">
-        💡 ${d.tip}
+        ${d.tip}
         <br/>
         <a href="${videoUrl}" target="_blank" rel="noopener" class="drill-video-link" onclick="event.stopPropagation()">▶ Watch</a>
       </div>
     </div>`;
   }).join('');
-  // set timer to first incomplete
   if (!timerRunning) setTimerDrill(drills.findIndex((_,i)=>!pd().completed[dKey(activeWeek,activeDay,i)]) ?? 0);
 }
 
@@ -1371,14 +1580,11 @@ function renderProgress() {
   const total = w.days.reduce((s,d)=>s+d.drills.length,0);
   const done = w.days.reduce((s,d,di)=>s+d.drills.filter((_,dri)=>pd().completed[dKey(activeWeek,di,dri)]).length,0);
   const pct = total ? Math.round((done/total)*100) : 0;
-  document.getElementById('prog-label').textContent = `Week ${activeWeek + 1} Progress`;
-  document.getElementById('prog-pct').textContent = pct + '%';
   document.getElementById('prog-fill').style.width = pct + '%';
 }
 
 function renderStreak() {
   const data = pd();
-  // build 10-week calendar ending today
   const today = new Date(); today.setHours(0,0,0,0);
   const cal = document.getElementById('streak-cal');
   const days = [];
@@ -1386,7 +1592,6 @@ function renderStreak() {
     const d = new Date(today); d.setDate(d.getDate()-i);
     days.push(d);
   }
-  // group into weeks
   const weeks = [];
   for (let i=0;i<days.length;i+=7) weeks.push(days.slice(i,i+7));
   const practiced = new Set(data.practiceDays||[]);
@@ -1396,7 +1601,6 @@ function renderStreak() {
       const isToday = d.getTime()===today.getTime();
       return `<div class="streak-day-dot${practiced.has(ds)?' practiced':''}${isToday?' today':''}" title="${ds}"></div>`;
     }).join('')}</div>`).join('');
-  // calc streak
   let streak=0, best=data.bestStreak||0, total=practiced.size;
   let check=new Date(today);
   while(practiced.has(check.toISOString().slice(0,10))){streak++;check.setDate(check.getDate()-1);}
@@ -1420,12 +1624,10 @@ function drillExpand(i) {
 function markDrillDone(i) {
   const key = dKey(activeWeek,activeDay,i);
   pd().completed[key] = !pd().completed[key];
-  // record practice day
   const today = new Date().toISOString().slice(0,10);
   if (!pd().practiceDays) pd().practiceDays = [];
   if (!pd().practiceDays.includes(today)) pd().practiceDays.push(today);
   saveData();
-  // check if session complete
   const drills = WEEKS[activeWeek].days[activeDay].drills;
   const allDone = drills.every((_,di)=>pd().completed[dKey(activeWeek,activeDay,di)]);
   if (allDone) { showToast(); launchConfetti(); }
@@ -1459,7 +1661,6 @@ function startTimer() {
       timerSeconds = 0;
       stopTimer();
       playBeep();
-      // auto-advance
       setTimeout(()=>timerNextDrill(), 800);
     }
     updateTimerDisplay();
@@ -1489,18 +1690,26 @@ function timerNextDrill() {
   setTimerDrill(next);
 }
 
+function updateTimerRing() {
+  const circumference = 452.4; // 2 * PI * 72
+  const ring = document.getElementById('timer-ring-progress');
+  if (!ring) return;
+  const offset = timerTotal > 0
+    ? circumference * (1 - timerSeconds / timerTotal)
+    : 0;
+  ring.style.strokeDashoffset = offset;
+}
+
 function updateTimerDisplay() {
   const m = Math.floor(timerSeconds/60).toString().padStart(2,'0');
   const s = (timerSeconds%60).toString().padStart(2,'0');
   const el = document.getElementById('timer-display');
   el.textContent = `${m}:${s}`;
-  // preserve running class, only toggle urgent
   const isRunning = el.classList.contains('running');
-  el.className = 'timer-display' +
+  el.className = 'timer-digits' +
     (isRunning ? ' running' : '') +
     (timerSeconds<=10 && timerSeconds>0 ? ' urgent' : '');
-  const pct = timerTotal > 0 ? (timerSeconds/timerTotal)*100 : 100;
-  document.getElementById('timer-prog-fill').style.width = pct + '%';
+  updateTimerRing();
 }
 
 function playBeep() {
@@ -1515,6 +1724,15 @@ function playBeep() {
 }
 
 // ─── SHOT TRACKER ───────────────────────────────────────────────────────────
+function updateShotRing() {
+  const circumference = 326.7; // 2 * PI * 52
+  const ring = document.getElementById('shot-ring-progress');
+  if (!ring) return;
+  const pct = shotAttempts > 0 ? Math.round((shotMakes / shotAttempts) * 100) : 0;
+  const offset = circumference * (1 - pct / 100);
+  ring.style.strokeDashoffset = offset;
+}
+
 function upsertShotLog() {
   const today = new Date().toISOString().slice(0,10);
   if (!pd().shotLog) pd().shotLog = [];
@@ -1533,16 +1751,14 @@ function recordShot(make) {
   shotAttempts++;
   if (make) shotMakes++;
   shotHistory.push(make);
-  // ripple on make button
   if (make) {
     const btn = document.getElementById('sbtn-make');
     btn.classList.remove('rippling');
-    void btn.offsetWidth; // reflow to restart animation
+    void btn.offsetWidth;
     btn.classList.add('rippling');
     setTimeout(()=>btn.classList.remove('rippling'), 600);
   }
   updateShotDisplay();
-  // check PR
   const prKey = `${activeWeek}-${activeDay}`;
   if (!pd().sessionBest) pd().sessionBest = {};
   const curBest = pd().sessionBest[prKey] || 0;
@@ -1567,11 +1783,12 @@ function undoShot() {
 function updateShotDisplay() {
   document.getElementById('st-makes').textContent = shotMakes;
   document.getElementById('st-attempts').textContent = shotAttempts;
-  const pct = shotAttempts > 0 ? Math.round((shotMakes/shotAttempts)*100)+'%' : '—';
-  document.getElementById('st-pct').textContent = pct;
+  const pct = shotAttempts > 0 ? Math.round((shotMakes/shotAttempts)*100) : null;
+  document.getElementById('st-pct').textContent = pct !== null ? pct + '%' : '—';
   const prKey = `${activeWeek}-${activeDay}`;
   const best = pd()?.sessionBest?.[prKey];
   document.getElementById('pr-val').textContent = best ? best+'%' : '—';
+  updateShotRing();
 }
 
 // ─── SHOOTING HISTORY ───────────────────────────────────────────────────────
@@ -1588,7 +1805,6 @@ function renderHistory() {
     el.innerHTML = '<div class="history-empty">No sessions logged yet</div>';
     return;
   }
-  // most recent first, limit 20
   const sorted = [...log].sort((a, b) => {
     if (b.date !== a.date) return b.date.localeCompare(a.date);
     if (b.week !== a.week) return b.week - a.week;
@@ -1611,7 +1827,6 @@ function renderHistory() {
 
 function deleteHistoryEntry(date, week, day) {
   pd().shotLog = (pd().shotLog || []).filter(e => !(e.date===date && e.week===week && e.day===day));
-  // recalculate PR for this week/day from remaining entries
   const prKey = `${week}-${day}`;
   const remaining = (pd().shotLog || []).filter(e => e.week===week && e.day===day && e.attempts >= 5);
   if (!pd().sessionBest) pd().sessionBest = {};
