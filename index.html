@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Rise Up 🏀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--wc:#FF6B35;--wa:#FFD23F}
+body{background:#08080f;color:#fff;font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+button{cursor:pointer;border:none;background:none;color:inherit;font-family:inherit}
+
+/* PLAYER SELECT */
+#player-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px;background:radial-gradient(ellipse at 50% 30%,#1a0830 0%,#08080f 70%)}
+.player-title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:4px;text-align:center;line-height:1}
+.player-title span{color:#FF6B35;text-shadow:0 0 40px #FF6B3566}
+.player-sub{color:rgba(255,255,255,0.4);font-size:13px;text-align:center;margin:10px 0 40px;letter-spacing:2px;text-transform:uppercase}
+.player-cards{display:flex;gap:16px;width:100%;max-width:340px}
+.player-card{flex:1;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px 16px;text-align:center;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden}
+.player-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--pc)22,transparent);opacity:0;transition:opacity 0.25s}
+.player-card:hover{transform:translateY(-4px);border-color:var(--pc)}
+.player-card:hover::before{opacity:1}
+.player-card .p-emoji{font-size:48px;display:block;margin-bottom:12px}
+.player-card .p-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px}
+.player-card .p-badge{font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+
+/* MAIN APP */
+#app{display:none;min-height:100vh}
+.app-header{background:radial-gradient(ellipse at 50% 0%,#1a0830 0%,#08080f 80%);padding:20px 16px 0;position:relative;overflow:hidden}
+.app-header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:260px;height:180px;border:1.5px solid rgba(255,107,53,0.12);border-radius:0 0 130px 130px;border-top:none}
+.app-header::after{content:'';position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:140px;height:100px;border:1.5px solid rgba(255,107,53,0.08);border-radius:0 0 70px 70px;border-top:none}
+.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.player-switcher{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:6px 12px;cursor:pointer;transition:all 0.2s}
+.player-switcher:hover{background:rgba(255,255,255,0.1)}
+.player-switcher span{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.6)}
+.streak-badge{display:flex;align-items:center;gap:5px;background:rgba(255,210,63,0.12);border:1px solid rgba(255,210,63,0.25);border-radius:20px;padding:6px 12px}
+.streak-badge span{font-size:13px;font-weight:700;color:#FFD23F}
+.app-title{text-align:center;padding-bottom:20px}
+.app-title h1{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:3px;line-height:1}
+.app-title h1 em{color:var(--wc);font-style:normal;text-shadow:0 0 30px var(--wc)}
+.app-title p{font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+
+/* WEEK PROGRESS */
+.week-progress{padding:0 16px 16px}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.prog-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.prog-pct{font-size:13px;font-weight:700;color:var(--wc)}
+.prog-bar{background:rgba(255,255,255,0.07);border-radius:4px;height:5px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--wc),var(--wa));border-radius:4px;transition:width 0.5s cubic-bezier(.4,0,.2,1)}
+
+/* WEEK TABS */
+.week-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px 16px}
+.wtab{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 6px;cursor:pointer;text-align:center;transition:all 0.2s}
+.wtab:hover{background:rgba(255,255,255,0.09);transform:translateY(-1px)}
+.wtab.active{border-color:var(--tc);background:rgba(255,255,255,0.08)}
+.wtab .wt-emoji{font-size:20px}
+.wtab .wt-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px}
+.wtab.active .wt-label{color:var(--tc)}
+
+/* PHASE BANNER */
+.phase-banner{margin:0 16px 16px;background:linear-gradient(135deg,var(--tc)18,var(--ta)08);border:1.5px solid var(--tc)44;border-radius:16px;padding:14px 18px;text-align:center}
+.phase-banner h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--tc)}
+.phase-banner p{font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px}
+
+/* DAY TABS */
+.day-tabs{display:flex;gap:8px;justify-content:center;padding:0 16px 16px}
+.dtab{padding:8px 22px;border-radius:30px;border:1.5px solid rgba(255,255,255,0.12);font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);transition:all 0.2s;background:transparent}
+.dtab:hover{background:rgba(255,255,255,0.07);color:#fff}
+.dtab.active{background:var(--tc);border-color:var(--tc);color:#fff}
+.dtab.done-day{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.55)}
+.dtab.done-day::after{content:'✓';margin-left:5px;opacity:0.7}
+
+/* DRILLS */
+.drills-section{padding:0 16px 16px}
+.section-hdr{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px}
+.drill-card{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px 14px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
+.drill-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--tc);border-radius:3px 0 0 3px;opacity:0;transition:opacity 0.2s}
+.drill-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.14)}
+.drill-card.done{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.04)}
+.drill-card.done::before,.drill-card:hover::before{opacity:1}
+.drill-top{display:flex;align-items:center;gap:10px}
+.check-ring{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;transition:all 0.2s;background:transparent}
+.check-ring.checked{background:var(--tc);border-color:var(--tc);color:#fff}
+.drill-info{flex:1}
+.drill-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;transition:color 0.2s}
+.drill-card.done .drill-name{color:rgba(255,255,255,0.28)}
+.drill-dur{font-size:11px;font-weight:700;color:var(--tc);background:var(--tc)1a;padding:3px 9px;border-radius:16px;white-space:nowrap}
+.drill-tip{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.45;margin-top:8px;padding:8px 10px;background:rgba(255,255,255,0.04);border-radius:8px;display:none}
+.drill-card.expanded .drill-tip{display:block}
+.drill-expand{font-size:10px;color:rgba(255,255,255,0.25);margin-top:6px;text-align:right;letter-spacing:1px}
+
+/* TIMER */
+.timer-bar{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;margin:0 16px 16px}
+.timer-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;text-align:center}
+.timer-display{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:3px;text-align:center;color:#fff;line-height:1;transition:color 0.3s}
+.timer-display.urgent{color:#FF6B35;text-shadow:0 0 20px #FF6B3555}
+.timer-name{font-size:13px;color:rgba(255,255,255,0.5);text-align:center;margin-bottom:12px;min-height:18px}
+.timer-btns{display:flex;gap:8px;justify-content:center}
+.tbtn{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:700;letter-spacing:1px;transition:all 0.2s}
+.tbtn-start{background:var(--tc);color:#fff}
+.tbtn-start:hover{filter:brightness(1.15)}
+.tbtn-reset{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6)}
+.tbtn-reset:hover{background:rgba(255,255,255,0.14)}
+.tbtn-next{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6)}
+.tbtn-next:hover{background:rgba(255,255,255,0.14)}
+.timer-prog{background:rgba(255,255,255,0.07);height:3px;border-radius:2px;margin-top:12px;overflow:hidden}
+.timer-prog-fill{height:100%;background:linear-gradient(90deg,var(--tc),var(--ta));border-radius:2px;transition:width 0.5s linear}
+
+/* SHOT TRACKER */
+.shot-section{padding:0 16px 16px}
+.shot-box{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px}
+.shot-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.shot-stat{text-align:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 6px}
+.shot-stat .ss-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--tc)}
+.shot-stat .ss-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px}
+.shot-btns{display:flex;gap:8px}
+.sbtn{flex:1;padding:12px;border-radius:12px;font-size:13px;font-weight:700;letter-spacing:0.5px;transition:all 0.18s;text-align:center}
+.sbtn-make{background:linear-gradient(135deg,#06D6A0,#00a878);color:#fff}
+.sbtn-make:hover{filter:brightness(1.12);transform:scale(1.02)}
+.sbtn-miss{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5)}
+.sbtn-miss:hover{background:rgba(255,255,255,0.13)}
+.sbtn-undo{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);padding:12px 14px;flex:0}
+.pr-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06)}
+.pr-label{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px}
+.pr-val{font-size:12px;font-weight:700;color:#FFD23F}
+
+/* STREAK CALENDAR */
+.streak-section{padding:0 16px 16px}
+.streak-box{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px}
+.streak-months{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.streak-months::-webkit-scrollbar{display:none}
+.streak-week{display:flex;flex-direction:column;gap:4px}
+.streak-day-dot{width:14px;height:14px;border-radius:3px;background:rgba(255,255,255,0.07);transition:all 0.2s;position:relative}
+.streak-day-dot.practiced{background:var(--tc)}
+.streak-day-dot.today{outline:2px solid #fff;outline-offset:1px}
+.streak-info{display:flex;justify-content:space-between;margin-top:12px}
+.si-item{text-align:center}
+.si-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--tc)}
+.si-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+
+/* BEEF */
+.beef-section{padding:0 16px 16px}
+.beef-toggle{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:12px 16px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:12px;margin-bottom:0;transition:all 0.2s}
+.beef-toggle:hover{background:rgba(255,255,255,0.07)}
+.beef-toggle span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.beef-toggle .arr{font-size:11px;color:rgba(255,255,255,0.25);transition:transform 0.2s}
+.beef-toggle.open .arr{transform:rotate(180deg)}
+.beef-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;overflow:hidden;max-height:0;transition:max-height 0.3s ease}
+.beef-grid.open{max-height:400px}
+.beef-card{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 12px;text-align:center}
+.beef-letter{font-family:'Bebas Neue',sans-serif;font-size:38px;line-height:1}
+.beef-word{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;margin:2px 0 6px}
+.beef-desc{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.4}
+
+/* PARENT TIPS */
+.tips-section{padding:0 16px 16px}
+.tips-box{background:rgba(255,255,255,0.03);border:1.5px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden}
+.tip-row{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.tip-row:last-child{border-bottom:none}
+.tip-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.tip-text strong{display:block;font-size:12px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:2px}
+.tip-text p{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.4}
+
+/* CONFETTI */
+#confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:999;display:none}
+
+/* SESSION COMPLETE */
+.session-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,#06D6A0,#00a878);color:#fff;border-radius:16px;padding:14px 22px;font-weight:700;font-size:14px;text-align:center;z-index:998;transition:transform 0.4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;box-shadow:0 8px 30px rgba(6,214,160,0.4)}
+.session-toast.show{transform:translateX(-50%) translateY(0)}
+.footer{text-align:center;padding:12px 20px 32px;font-size:11px;color:rgba(255,255,255,0.15);letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<div id="player-screen">
+  <div class="player-title">🏀 RISE<br/><span>UP</span></div>
+  <div class="player-sub">Who's training today?</div>
+  <div class="player-cards">
+    <div class="player-card" style="--pc:#FF6B35" onclick="selectPlayer('ethan')">
+      <span class="p-emoji">⚡</span>
+      <div class="p-name" style="color:#FF6B35">ETHAN</div>
+      <div class="p-badge">Player 1</div>
+    </div>
+    <div class="player-card" style="--pc:#3B82F6" onclick="selectPlayer('justin')">
+      <span class="p-emoji">🔥</span>
+      <div class="p-name" style="color:#3B82F6">JUSTIN</div>
+      <div class="p-badge">Player 2</div>
+    </div>
+  </div>
+</div>
+
+<div id="app">
+  <canvas id="confetti-canvas"></canvas>
+  <div class="session-toast" id="toast">🎉 Session Complete! Keep grinding!</div>
+
+  <div class="app-header">
+    <div class="header-top">
+      <button class="player-switcher" onclick="backToSelect()">
+        <span id="player-icon">⚡</span>
+        <span id="player-name-hdr">ETHAN</span>
+        <span style="font-size:10px;opacity:0.4;margin-left:2px">▾</span>
+      </button>
+      <div class="streak-badge">
+        <span>🔥</span>
+        <span id="streak-count">0</span>
+        <span style="font-size:10px;color:rgba(255,255,255,0.4);font-weight:500"> day streak</span>
+      </div>
+    </div>
+    <div class="app-title">
+      <h1>RISE <em id="player-name-title">ETHAN</em></h1>
+      <p>CYO Prep · 8 Weeks · 3 Days/Week</p>
+    </div>
+    <div class="week-progress">
+      <div class="prog-row">
+        <span class="prog-label" id="prog-label">Week 1 Progress</span>
+        <span class="prog-pct" id="prog-pct">0%</span>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+    <div class="week-tabs" id="week-tabs"></div>
+  </div>
+
+  <div id="phase-banner" class="phase-banner">
+    <h2 id="phase-name"></h2>
+    <p id="phase-tagline"></p>
+  </div>
+
+  <div class="day-tabs" id="day-tabs"></div>
+
+  <div class="timer-bar">
+    <div class="timer-label">Drill Timer</div>
+    <div class="timer-display" id="timer-display">00:00</div>
+    <div class="timer-name" id="timer-drill-name">Select a drill to start</div>
+    <div class="timer-btns">
+      <button class="tbtn tbtn-start" id="tbtn-start" onclick="timerStartStop()">START</button>
+      <button class="tbtn tbtn-reset" onclick="timerReset()">RESET</button>
+      <button class="tbtn tbtn-next" onclick="timerNextDrill()">NEXT ›</button>
+    </div>
+    <div class="timer-prog"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
+  </div>
+
+  <div class="drills-section">
+    <div class="section-hdr" id="drill-section-hdr">Today's Drills</div>
+    <div id="drill-list"></div>
+  </div>
+
+  <div class="shot-section">
+    <div class="section-hdr">🎯 Shot Tracker</div>
+    <div class="shot-box">
+      <div class="shot-stats">
+        <div class="shot-stat"><div class="ss-val" id="st-makes">0</div><div class="ss-lbl">Makes</div></div>
+        <div class="shot-stat"><div class="ss-val" id="st-attempts">0</div><div class="ss-lbl">Attempts</div></div>
+        <div class="shot-stat"><div class="ss-val" id="st-pct">—</div><div class="ss-lbl">%</div></div>
+      </div>
+      <div class="shot-btns">
+        <button class="sbtn sbtn-make" onclick="recordShot(true)">✓ MAKE</button>
+        <button class="sbtn sbtn-miss" onclick="recordShot(false)">✗ MISS</button>
+        <button class="sbtn sbtn-undo" onclick="undoShot()">↩</button>
+      </div>
+      <div class="pr-row">
+        <span class="pr-label">🏆 Personal Record (session)</span>
+        <span class="pr-val" id="pr-val">—</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="streak-section">
+    <div class="section-hdr">📅 Practice Streak</div>
+    <div class="streak-box">
+      <div class="streak-months" id="streak-cal"></div>
+      <div class="streak-info">
+        <div class="si-item"><div class="si-val" id="cal-total">0</div><div class="si-lbl">Total Days</div></div>
+        <div class="si-item"><div class="si-val" id="cal-streak">0</div><div class="si-lbl">Current Streak</div></div>
+        <div class="si-item"><div class="si-val" id="cal-best">0</div><div class="si-lbl">Best Streak</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="beef-section">
+    <div class="section-hdr">🍪 The BEEF Formula</div>
+    <div class="beef-toggle" id="beef-toggle" onclick="toggleBeef()">
+      <span>Balance · Eyes · Elbow · Follow Through</span>
+      <span class="arr">▼</span>
+    </div>
+    <div class="beef-grid" id="beef-grid">
+      <div class="beef-card"><div class="beef-letter" style="color:#FF6B35;text-shadow:0 0 20px #FF6B3555">B</div><div class="beef-word">Balance</div><div class="beef-desc">Feet shoulder-width apart, knees slightly bent before every shot.</div></div>
+      <div class="beef-card"><div class="beef-letter" style="color:#E63946;text-shadow:0 0 20px #E6394655">E</div><div class="beef-word">Eyes</div><div class="beef-desc">Lock on a spot on the rim before you shoot. Don't watch the ball.</div></div>
+      <div class="beef-card"><div class="beef-letter" style="color:#7209B7;text-shadow:0 0 20px #7209B755">E</div><div class="beef-word">Elbow</div><div class="beef-desc">Shooting elbow tucked under the ball, pointing at the basket.</div></div>
+      <div class="beef-card"><div class="beef-letter" style="color:#06D6A0;text-shadow:0 0 20px #06D6A055">F</div><div class="beef-word">Follow Through</div><div class="beef-desc">Reach into the cookie jar — hold your hand up until it goes in.</div></div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <div class="section-hdr">📋 Parent Reminders</div>
+    <div class="tips-box">
+      <div class="tip-row"><div class="tip-icon">👈</div><div class="tip-text"><strong>Left hand matters</strong><p>He'll resist it. Do it anyway. This is the biggest separator at youth level.</p></div></div>
+      <div class="tip-row"><div class="tip-icon">🔢</div><div class="tip-text"><strong>Count made shots</strong><p>Kids respond to personal records. Beat yesterday's number — that's all that matters.</p></div></div>
+      <div class="tip-row"><div class="tip-icon">🏆</div><div class="tip-text"><strong>End with free play</strong><p>Always finish by letting him shoot around freely. Keeps him wanting to come back.</p></div></div>
+      <div class="tip-row"><div class="tip-icon">😤</div><div class="tip-text"><strong>Don't over-coach</strong><p>Just rebound for him. Reps matter more than perfect instruction at this age.</p></div></div>
+      <div class="tip-row"><div class="tip-icon">🎉</div><div class="tip-text"><strong>Celebrate small wins</strong><p>First left-hand make, best free throw session — those moments build the love of the game.</p></div></div>
+    </div>
+  </div>
+
+  <div class="footer">Fall season is coming. Put in the work. 🏀</div>
+</div>
+
+<script>
+// ─── DATA ──────────────────────────────────────────────────────────────────
+const API = 'https://helio-tasks-api.onrender.com';
+const GH_REPO = 'hdohnert-helio/ethan-hoops';
+
+const WEEKS = [
+  {range:'Wks 1–2',theme:'Ball Handling',emoji:'🤜',color:'#FF6B35',accent:'#FFD23F',tagline:'Make the ball your best friend',
+   days:[
+    {label:'Day 1',drills:[
+      {name:'Stationary Dribbling',dur:5,tip:'Right hand, left hand, alternating. Pound it HARD — eyes up, not down at the ball.',icon:'👀'},
+      {name:'Dribble Walks',dur:5,tip:'Walk the driveway dribbling right, come back left. Eyes forward the whole time.',icon:'🚶'},
+      {name:'BEEF Shooting (close)',dur:10,tip:'3–5 feet from hoop only. Balance → Eyes on rim → Elbow under ball → Follow through like reaching into a cookie jar.',icon:'🍪'},
+      {name:'Free Play',dur:5,tip:'Just shoot around and have fun. No coaching — just hoop.',icon:'😄'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Figure-8 Through Legs',dur:5,tip:'Slow is totally fine. This is all about getting the feel. Speed comes later.',icon:'🔄'},
+      {name:'Dribble Walks (left hand)',dur:5,tip:'Left hand feels awkward — that\'s the point. Push through it.',icon:'✋'},
+      {name:'BEEF Shooting (close)',dur:10,tip:'Same as Day 1. Lock in that follow-through every single time.',icon:'🍪'},
+      {name:'Free Play',dur:5,tip:'His choice, his rules.',icon:'😄'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Dribbling Combo',dur:7,tip:'Mix it up: right, left, crossover, between legs. String them together.',icon:'🔀'},
+      {name:'Figure-8 Speed Run',dur:5,tip:'Try to go faster than Day 2. Count your reps.',icon:'⏱️'},
+      {name:'BEEF Shooting',dur:13,tip:'Move around: straight on, left side, right side. Still close range.',icon:'🍪'},
+      {name:'Free Play',dur:5,tip:'End it happy.',icon:'😄'},
+    ]},
+  ]},
+  {range:'Wks 3–4',theme:'Shooting Form',emoji:'🎯',color:'#E63946',accent:'#06D6A0',tagline:'One hand. Cookie jar. Every time.',
+   days:[
+    {label:'Day 1',drills:[
+      {name:'One-Hand Form Shooting',dur:10,tip:'Right hand only, 3 feet from basket. Left hand off the ball. Just flick it in. Build the muscle memory.',icon:'☝️'},
+      {name:'Mid-Range Shots',dur:10,tip:'Step back to 6–8 feet. Straight on, left side, right side. BEEF every single shot.',icon:'📐'},
+      {name:'Free Throws',dur:5,tip:'Same exact spot every time. Build the routine — bounce it twice, deep breath, shoot.',icon:'🔁'},
+      {name:'Free Play',dur:5,tip:'Go have fun.',icon:'😄'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Ball Handling Warmup',dur:5,tip:'Week 1 drills — stationary dribble and figure-8. Stay sharp.',icon:'🔥'},
+      {name:'Dribble into Shot',dur:10,tip:'2 dribbles, hard stop, shoot. Keep it simple. Don\'t rush the shot.',icon:'⏸️'},
+      {name:'Mid-Range Both Sides',dur:10,tip:'Left side matters as much as right. Don\'t skip it.',icon:'↔️'},
+      {name:'Free Play',dur:5,tip:'Shoot wherever he wants.',icon:'😄'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Form Shooting (close)',dur:7,tip:'Back to basics — lock in that perfect form before moving out.',icon:'☝️'},
+      {name:'Beat Yesterday',dur:10,tip:'Pick a spot 6–8 feet out. How many makes in 2 minutes? Try to beat it.',icon:'📈'},
+      {name:'Free Throws',dur:8,tip:'Routine, routine, routine. Same spot, same bounce, same breath.',icon:'🔁'},
+      {name:'Free Play',dur:5,tip:'Done. Go have fun.',icon:'😄'},
+    ]},
+  ]},
+  {range:'Wks 5–6',theme:'Footwork & Layups',emoji:'👟',color:'#7209B7',accent:'#F72585',tagline:"Don't travel. Don't think. Just move.",
+   days:[
+    {label:'Day 1',drills:[
+      {name:'Pivot Practice',dur:5,tip:'Plant one foot, swing the other. Left foot pivot, right foot pivot. This stops traveling calls.',icon:'🦶'},
+      {name:'Layup Approach (walk)',dur:10,tip:'Right side = right foot up last. Left side = left foot up last. Walk it slow until it clicks.',icon:'🚶'},
+      {name:'Slow Jog Layups',dur:10,tip:'Jog in, same footwork. Don\'t rush. Right side first, then left.',icon:'🏃'},
+      {name:'Free Play',dur:5,tip:'Earn it. He just did real work.',icon:'😄'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Ball Handling Warmup',dur:5,tip:'Crossovers, figure-8, alternating. Keep the handle sharp.',icon:'🔥'},
+      {name:'Dribble + Layup (right)',dur:8,tip:'Start at half court. 2–3 dribbles, full speed, layup. Right side only today.',icon:'➡️'},
+      {name:'Dribble + Layup (left)',dur:8,tip:"Left side. It'll look rough. Do it anyway — this is how you get better.",icon:'⬅️'},
+      {name:'Mid-Range Shooting',dur:5,tip:'His choice of spots.',icon:'🎯'},
+      {name:'Free Play',dur:4,tip:'End on a smile.',icon:'😄'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Pivot + Shot',dur:7,tip:'Grab the ball, pivot to face the basket, shoot. Simulates catching a pass.',icon:'🔄'},
+      {name:'Full Speed Layups',dur:13,tip:'Alternate right and left every rep. Count made layups — try to get 10 each side.',icon:'💨'},
+      {name:'Free Play',dur:5,tip:'He earned it.',icon:'😄'},
+    ]},
+  ]},
+  {range:'Wks 7–8',theme:'Game Time',emoji:'🏆',color:'#059669',accent:'#FFD23F',tagline:'Put it all together. Play like a baller.',
+   days:[
+    {label:'Day 1',drills:[
+      {name:'Ball Handling Warmup',dur:5,tip:'Best moves from weeks 1–2. Stationary, figure-8, crossovers. Eyes UP.',icon:'🔥'},
+      {name:'Make 5 Game',dur:10,tip:"Pick a spot. Can't move until he makes 5. Then next spot. How many spots in 10 minutes?",icon:'🎮'},
+      {name:'Layup Lines (both sides)',dur:5,tip:'Alternating. Right, left, right, left. Full speed.',icon:'💨'},
+      {name:'1-on-1 vs You',dur:10,tip:'Play light defense. Let him score sometimes. Teach him to use his dribble and look for the basket.',icon:'🤜'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Full Skill Warmup',dur:5,tip:'Dribbling, figure-8, pivots. Run through the hits.',icon:'🔥'},
+      {name:'Free Throw Challenge',dur:8,tip:'10 shots from the line. Track his percentage. Try to beat it next session.',icon:'📊'},
+      {name:'Dribble + Shot Combo',dur:7,tip:'3 dribbles from different spots, pull up and shoot. Both sides.',icon:'🎯'},
+      {name:'1-on-1 vs You',dur:10,tip:"This time play a little harder. He should have to work for it.",icon:'🤜'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Full Warmup',dur:5,tip:'Everything: dribbling, figure-8, pivots, one layup each side.',icon:'🔥'},
+      {name:'Make 5 at 5 Spots',dur:10,tip:'5 different spots around the key. Make 5 at each before moving. Go as fast as possible.',icon:'🎮'},
+      {name:'1-on-1 Full Game',dur:15,tip:'Play to 11 by 1s. Real defense. He knows what he\'s doing now — let him prove it.',icon:'🏆'},
+    ]},
+  ]},
+];
+
+const PLAYERS = {
+  ethan: {name:'Ethan', icon:'⚡', color:'#FF6B35'},
+  justin: {name:'Justin', icon:'🔥', color:'#3B82F6'},
+};
+
+// ─── STATE ─────────────────────────────────────────────────────────────────
+let currentPlayer = null;
+let playerData = { ethan: defaultData(), justin: defaultData() };
+let activeWeek = 0, activeDay = 0;
+let expandedDrill = null;
+let timerInterval = null, timerRunning = false, timerSeconds = 0, timerTotal = 0, timerDrillIdx = 0;
+let shotMakes = 0, shotAttempts = 0, shotHistory = [];
+let beefOpen = false;
+let saveTimeout = null;
+
+function defaultData() {
+  return { completed: {}, practiceDays: [], sessionBest: {}, bestStreak: 0 };
+}
+
+// ─── STORAGE ────────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const res = await fetch(`${API}/github/content?repo=${GH_REPO}&path=data/progress.json`, {
+      headers: {'x-app-pass': 'HelioSolar2026'}
+    });
+    if (res.ok) {
+      const json = await res.json();
+      const content = JSON.parse(atob(json.content));
+      playerData = { ethan: defaultData(), justin: defaultData(), ...content };
+    }
+  } catch(e) { console.log('Load failed, using local', e); }
+  // fallback to localStorage
+  const local = localStorage.getItem('riseup-data');
+  if (local) {
+    try { const parsed = JSON.parse(local); playerData = {...playerData, ...parsed}; } catch(e){}
+  }
+}
+
+async function saveData() {
+  localStorage.setItem('riseup-data', JSON.stringify(playerData));
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(async () => {
+    try {
+      // get current sha
+      const res = await fetch(`${API}/github/content?repo=${GH_REPO}&path=data/progress.json`, {
+        headers:{'x-app-pass':'HelioSolar2026'}
+      });
+      let sha = null;
+      if (res.ok) { const j = await res.json(); sha = j.sha; }
+      const body = { repo: GH_REPO, path: 'data/progress.json', message: 'Update player progress', content: btoa(JSON.stringify(playerData)), sha };
+      await fetch(`${API}/github/update`, {
+        method:'POST', headers:{'Content-Type':'application/json','x-app-pass':'HelioSolar2026'},
+        body: JSON.stringify(body)
+      });
+    } catch(e) { console.log('Save to GitHub failed, localStorage OK', e); }
+  }, 1500);
+}
+
+// ─── PLAYER SELECT ──────────────────────────────────────────────────────────
+function selectPlayer(p) {
+  currentPlayer = p;
+  document.getElementById('player-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  const pl = PLAYERS[p];
+  document.getElementById('player-name-hdr').textContent = pl.name;
+  document.getElementById('player-name-title').textContent = pl.name;
+  document.getElementById('player-icon').textContent = pl.icon;
+  document.documentElement.style.setProperty('--wc', pl.color);
+  renderAll();
+}
+
+function backToSelect() {
+  document.getElementById('player-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  stopTimer();
+}
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+function pd() { return playerData[currentPlayer]; }
+
+function renderAll() {
+  renderWeekTabs();
+  renderPhase();
+  renderDayTabs();
+  renderDrills();
+  renderProgress();
+  renderStreak();
+  updateShotDisplay();
+}
+
+function renderWeekTabs() {
+  const el = document.getElementById('week-tabs');
+  el.innerHTML = WEEKS.map((w,i) => `
+    <div class="wtab${i===activeWeek?' active':''}" style="--tc:${w.color}" onclick="selectWeek(${i})">
+      <div class="wt-emoji">${w.emoji}</div>
+      <div class="wt-label">${w.range}</div>
+    </div>`).join('');
+}
+
+function renderPhase() {
+  const w = WEEKS[activeWeek];
+  document.getElementById('phase-banner').style.setProperty('--tc', w.color);
+  document.getElementById('phase-banner').style.setProperty('--ta', w.accent);
+  document.getElementById('phase-name').textContent = w.theme;
+  document.getElementById('phase-tagline').textContent = w.tagline;
+  // timer color
+  document.documentElement.style.setProperty('--tc', w.color);
+  document.documentElement.style.setProperty('--ta', w.accent);
+}
+
+function renderDayTabs() {
+  const w = WEEKS[activeWeek];
+  const el = document.getElementById('day-tabs');
+  el.innerHTML = w.days.map((d,i) => {
+    const allDone = d.drills.every((_,di) => pd().completed[dKey(activeWeek,i,di)]);
+    return `<button class="dtab${i===activeDay?' active':''}${allDone?' done-day':''}" onclick="selectDay(${i})">${d.label}</button>`;
+  }).join('');
+}
+
+function renderDrills() {
+  const drills = WEEKS[activeWeek].days[activeDay].drills;
+  const totalMin = drills.reduce((s,d)=>s+d.dur,0);
+  document.getElementById('drill-section-hdr').textContent = `Today's Drills — ${totalMin} min total`;
+  const el = document.getElementById('drill-list');
+  el.innerHTML = drills.map((d,i) => {
+    const done = !!pd().completed[dKey(activeWeek,activeDay,i)];
+    const expanded = expandedDrill === i;
+    return `<div class="drill-card${done?' done':''}${expanded?' expanded':''}" onclick="drillClick(${i})">
+      <div class="drill-top">
+        <div class="check-ring${done?' checked':''}">
+          ${done?'✓':''}
+        </div>
+        <div class="drill-info">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+            <div class="drill-name">${d.icon} ${d.name}</div>
+            <div class="drill-dur">${d.dur} min</div>
+          </div>
+          <div class="drill-expand">${expanded?'▲ hide tip':'▾ show tip'}</div>
+        </div>
+      </div>
+      <div class="drill-tip">💡 ${d.tip}</div>
+    </div>`;
+  }).join('');
+  // set timer to first incomplete
+  if (!timerRunning) setTimerDrill(drills.findIndex((_,i)=>!pd().completed[dKey(activeWeek,activeDay,i)]) ?? 0);
+}
+
+function renderProgress() {
+  const w = WEEKS[activeWeek];
+  const total = w.days.reduce((s,d)=>s+d.drills.length,0);
+  const done = w.days.reduce((s,d,di)=>s+d.drills.filter((_,dri)=>pd().completed[dKey(activeWeek,di,dri)]).length,0);
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('prog-label').textContent = `Week ${activeWeek*2+1}–${activeWeek*2+2} Progress`;
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+
+function renderStreak() {
+  const data = pd();
+  // build 10-week calendar ending today
+  const today = new Date(); today.setHours(0,0,0,0);
+  const cal = document.getElementById('streak-cal');
+  const days = [];
+  for (let i=69;i>=0;i--) {
+    const d = new Date(today); d.setDate(d.getDate()-i);
+    days.push(d);
+  }
+  // group into weeks
+  const weeks = [];
+  for (let i=0;i<days.length;i+=7) weeks.push(days.slice(i,i+7));
+  const practiced = new Set(data.practiceDays||[]);
+  cal.innerHTML = weeks.map(wk=>`
+    <div class="streak-week">${wk.map(d=>{
+      const ds = d.toISOString().slice(0,10);
+      const isToday = d.getTime()===today.getTime();
+      return `<div class="streak-day-dot${practiced.has(ds)?' practiced':''}${isToday?' today':''}" title="${ds}"></div>`;
+    }).join('')}</div>`).join('');
+  // calc streak
+  let streak=0, best=data.bestStreak||0, total=practiced.size;
+  let check=new Date(today);
+  while(practiced.has(check.toISOString().slice(0,10))){streak++;check.setDate(check.getDate()-1);}
+  document.getElementById('streak-count').textContent = streak;
+  document.getElementById('cal-total').textContent = total;
+  document.getElementById('cal-streak').textContent = streak;
+  document.getElementById('cal-best').textContent = Math.max(streak, best);
+}
+
+// ─── INTERACTIONS ────────────────────────────────────────────────────────────
+function dKey(w,d,dr) { return `${w}-${d}-${dr}`; }
+
+function selectWeek(i) { activeWeek=i; activeDay=0; expandedDrill=null; stopTimer(); renderAll(); }
+function selectDay(i) { activeDay=i; expandedDrill=null; stopTimer(); renderDrills(); renderDayTabs(); renderProgress(); if(!timerRunning) setTimerDrill(0); }
+
+function drillClick(i) {
+  if (expandedDrill===i) { expandedDrill=null; } else { expandedDrill=i; }
+  // toggle completion on second tap same expanded
+  const key = dKey(activeWeek,activeDay,i);
+  if (!pd().completed[key] && expandedDrill===null) {
+    // they collapsed it without marking done, just re-render
+  }
+  renderDrills();
+}
+
+function markDrillDone(i, e) {
+  e && e.stopPropagation();
+  const key = dKey(activeWeek,activeDay,i);
+  pd().completed[key] = !pd().completed[key];
+  // record practice day
+  const today = new Date().toISOString().slice(0,10);
+  if (!pd().practiceDays) pd().practiceDays = [];
+  if (!pd().practiceDays.includes(today)) pd().practiceDays.push(today);
+  saveData();
+  // check if session complete
+  const drills = WEEKS[activeWeek].days[activeDay].drills;
+  const allDone = drills.every((_,di)=>pd().completed[dKey(activeWeek,activeDay,di)]);
+  if (allDone) { showToast(); launchConfetti(); }
+  renderDrills(); renderDayTabs(); renderProgress(); renderStreak();
+}
+
+// Make drill cards toggle completion on the check ring click
+document.addEventListener('click', function(e) {
+  const card = e.target.closest('.drill-card');
+  if (!card) return;
+  const ring = e.target.closest('.check-ring');
+  const list = document.getElementById('drill-list');
+  const cards = list.querySelectorAll('.drill-card');
+  const idx = Array.from(cards).indexOf(card);
+  if (ring) { markDrillDone(idx, e); }
+  else { expandedDrill = expandedDrill===idx ? null : idx; renderDrills(); }
+});
+
+// ─── TIMER ──────────────────────────────────────────────────────────────────
+function setTimerDrill(idx) {
+  const drills = WEEKS[activeWeek].days[activeDay].drills;
+  if (idx < 0 || idx >= drills.length) idx = 0;
+  timerDrillIdx = idx;
+  const d = drills[idx];
+  timerTotal = d.dur * 60;
+  timerSeconds = timerTotal;
+  document.getElementById('timer-drill-name').textContent = `${d.icon} ${d.name}`;
+  updateTimerDisplay();
+}
+
+function timerStartStop() {
+  if (timerRunning) { stopTimer(); }
+  else { startTimer(); }
+}
+
+function startTimer() {
+  timerRunning = true;
+  document.getElementById('tbtn-start').textContent = 'PAUSE';
+  timerInterval = setInterval(() => {
+    timerSeconds--;
+    if (timerSeconds <= 0) {
+      timerSeconds = 0;
+      stopTimer();
+      playBeep();
+      // auto-advance
+      setTimeout(()=>timerNextDrill(), 800);
+    }
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function stopTimer() {
+  timerRunning = false;
+  clearInterval(timerInterval);
+  document.getElementById('tbtn-start').textContent = 'START';
+}
+
+function timerReset() {
+  stopTimer();
+  const drills = WEEKS[activeWeek].days[activeDay].drills;
+  timerTotal = drills[timerDrillIdx].dur * 60;
+  timerSeconds = timerTotal;
+  updateTimerDisplay();
+}
+
+function timerNextDrill() {
+  stopTimer();
+  const drills = WEEKS[activeWeek].days[activeDay].drills;
+  let next = timerDrillIdx + 1;
+  if (next >= drills.length) next = 0;
+  setTimerDrill(next);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(timerSeconds/60).toString().padStart(2,'0');
+  const s = (timerSeconds%60).toString().padStart(2,'0');
+  const el = document.getElementById('timer-display');
+  el.textContent = `${m}:${s}`;
+  el.className = 'timer-display' + (timerSeconds<=10 && timerSeconds>0 ? ' urgent' : '');
+  const pct = timerTotal > 0 ? (timerSeconds/timerTotal)*100 : 100;
+  document.getElementById('timer-prog-fill').style.width = pct + '%';
+}
+
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext||window.webkitAudioContext)();
+    const osc = ctx.createOscillator(); const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.value = 880; gain.gain.setValueAtTime(0.3,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.4);
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime+0.4);
+  } catch(e){}
+}
+
+// ─── SHOT TRACKER ───────────────────────────────────────────────────────────
+function recordShot(make) {
+  shotAttempts++;
+  if (make) shotMakes++;
+  shotHistory.push(make);
+  updateShotDisplay();
+  // check PR
+  const today = new Date().toISOString().slice(0,10);
+  const prKey = `${activeWeek}-${activeDay}`;
+  if (!pd().sessionBest) pd().sessionBest = {};
+  const curBest = pd().sessionBest[prKey] || 0;
+  if (shotAttempts > 0) {
+    const pct = Math.round((shotMakes/shotAttempts)*100);
+    if (shotAttempts >= 5 && pct > curBest) {
+      pd().sessionBest[prKey] = pct;
+      saveData();
+    }
+  }
+  updateShotDisplay();
+}
+
+function undoShot() {
+  if (!shotHistory.length) return;
+  const last = shotHistory.pop();
+  shotAttempts--;
+  if (last) shotMakes--;
+  updateShotDisplay();
+}
+
+function updateShotDisplay() {
+  document.getElementById('st-makes').textContent = shotMakes;
+  document.getElementById('st-attempts').textContent = shotAttempts;
+  const pct = shotAttempts > 0 ? Math.round((shotMakes/shotAttempts)*100)+'%' : '—';
+  document.getElementById('st-pct').textContent = pct;
+  const prKey = `${activeWeek}-${activeDay}`;
+  const best = pd()?.sessionBest?.[prKey];
+  document.getElementById('pr-val').textContent = best ? best+'%' : '—';
+}
+
+// ─── BEEF TOGGLE ────────────────────────────────────────────────────────────
+function toggleBeef() {
+  beefOpen = !beefOpen;
+  document.getElementById('beef-toggle').className = 'beef-toggle' + (beefOpen?' open':'');
+  document.getElementById('beef-grid').className = 'beef-grid' + (beefOpen?' open':'');
+}
+
+// ─── CONFETTI ───────────────────────────────────────────────────────────────
+function launchConfetti() {
+  const canvas = document.getElementById('confetti-canvas');
+  canvas.style.display = 'block';
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  const colors = ['#FF6B35','#FFD23F','#06D6A0','#E63946','#7209B7','#3B82F6','#fff'];
+  const pieces = Array.from({length:120},()=>({
+    x:Math.random()*canvas.width, y:-20,
+    vx:(Math.random()-0.5)*6, vy:Math.random()*4+2,
+    r:Math.random()*6+3, color:colors[Math.floor(Math.random()*colors.length)],
+    rot:Math.random()*360, rv:(Math.random()-0.5)*8,
+  }));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy; p.rot+=p.rv; p.vy+=0.08;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.color; ctx.globalAlpha=Math.max(0,1-frame/140);
+      ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);
+      ctx.restore();
+    });
+    frame++;
+    if(frame<160) requestAnimationFrame(draw);
+    else { ctx.clearRect(0,0,canvas.width,canvas.height); canvas.style.display='none'; }
+  }
+  draw();
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+loadData().then(()=>{
+  // show player select
+});
+</script>
+</body>
+</html>
