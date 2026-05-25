@@ -266,13 +266,11 @@ a { transition: 0.18s ease; }
 }
 
 .ps-half-ethan {
-  clip-path: polygon(0 0, 60% 0, 40% 100%, 0 100%);
-  background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.22) 0%, rgba(7,7,15,0.0) 70%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.28) 0%, rgba(7,7,15,0.0) 70%);
 }
 
 .ps-half-justin {
-  clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
-  background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.22) 0%, rgba(7,7,15,0.0) 70%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.28) 0%, rgba(7,7,15,0.0) 70%);
 }
 
 /* Diagonal overlap strip for visual continuity */
@@ -1758,16 +1756,6 @@ function recordShot(make) {
     btn.classList.add('rippling');
     setTimeout(()=>btn.classList.remove('rippling'), 600);
   }
-  updateShotDisplay();
-  const prKey = `${activeWeek}-${activeDay}`;
-  if (!pd().sessionBest) pd().sessionBest = {};
-  const curBest = pd().sessionBest[prKey] || 0;
-  if (shotAttempts > 0) {
-    const pct = Math.round((shotMakes/shotAttempts)*100);
-    if (shotAttempts >= 5 && pct > curBest) {
-      pd().sessionBest[prKey] = pct;
-    }
-  }
   upsertShotLog();
   updateShotDisplay();
 }
@@ -1785,9 +1773,9 @@ function updateShotDisplay() {
   document.getElementById('st-attempts').textContent = shotAttempts;
   const pct = shotAttempts > 0 ? Math.round((shotMakes/shotAttempts)*100) : null;
   document.getElementById('st-pct').textContent = pct !== null ? pct + '%' : '—';
-  const prKey = `${activeWeek}-${activeDay}`;
-  const best = pd()?.sessionBest?.[prKey];
-  document.getElementById('pr-val').textContent = best ? best+'%' : '—';
+  const logEntries = (pd()?.shotLog || []).filter(e => e.week===activeWeek && e.day===activeDay && e.attempts>=5);
+  const best = logEntries.length ? Math.max(...logEntries.map(e => e.pct)) : null;
+  document.getElementById('pr-val').textContent = best !== null ? best+'%' : '—';
   updateShotRing();
 }
 
