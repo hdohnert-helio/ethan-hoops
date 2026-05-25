@@ -524,9 +524,9 @@ function renderDrills() {
   el.innerHTML = drills.map((d,i) => {
     const done = !!pd().completed[dKey(activeWeek,activeDay,i)];
     const expanded = expandedDrill === i;
-    return `<div class="drill-card${done?' done':''}${expanded?' expanded':''}" onclick="drillClick(${i})">
+    return `<div class="drill-card${done?' done':''}${expanded?' expanded':''}" onclick="drillExpand(${i})">
       <div class="drill-top">
-        <div class="check-ring${done?' checked':''}">
+        <div class="check-ring${done?' checked':''}" onclick="event.stopPropagation();markDrillDone(${i})">
           ${done?'✓':''}
         </div>
         <div class="drill-info">
@@ -590,18 +590,12 @@ function dKey(w,d,dr) { return `${w}-${d}-${dr}`; }
 function selectWeek(i) { activeWeek=i; activeDay=0; expandedDrill=null; stopTimer(); renderAll(); }
 function selectDay(i) { activeDay=i; expandedDrill=null; stopTimer(); renderDrills(); renderDayTabs(); renderProgress(); if(!timerRunning) setTimerDrill(0); }
 
-function drillClick(i) {
-  if (expandedDrill===i) { expandedDrill=null; } else { expandedDrill=i; }
-  // toggle completion on second tap same expanded
-  const key = dKey(activeWeek,activeDay,i);
-  if (!pd().completed[key] && expandedDrill===null) {
-    // they collapsed it without marking done, just re-render
-  }
+function drillExpand(i) {
+  expandedDrill = expandedDrill===i ? null : i;
   renderDrills();
 }
 
-function markDrillDone(i, e) {
-  e && e.stopPropagation();
+function markDrillDone(i) {
   const key = dKey(activeWeek,activeDay,i);
   pd().completed[key] = !pd().completed[key];
   // record practice day
@@ -615,18 +609,6 @@ function markDrillDone(i, e) {
   if (allDone) { showToast(); launchConfetti(); }
   renderDrills(); renderDayTabs(); renderProgress(); renderStreak();
 }
-
-// Make drill cards toggle completion on the check ring click
-document.addEventListener('click', function(e) {
-  const card = e.target.closest('.drill-card');
-  if (!card) return;
-  const ring = e.target.closest('.check-ring');
-  const list = document.getElementById('drill-list');
-  const cards = list.querySelectorAll('.drill-card');
-  const idx = Array.from(cards).indexOf(card);
-  if (ring) { markDrillDone(idx, e); }
-  else { expandedDrill = expandedDrill===idx ? null : idx; renderDrills(); }
-});
 
 // ─── TIMER ──────────────────────────────────────────────────────────────────
 function setTimerDrill(idx) {
