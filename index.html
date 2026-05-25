@@ -407,12 +407,12 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
   50%  { box-shadow: 0 0 0 4px color-mix(in srgb, var(--tc) 20%, transparent); }
   100% { box-shadow: 0 0 0 0 var(--tc); }
 }
-.week-tabs { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; padding: 0 16px 16px; }
+.week-tabs { display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: auto auto; gap: 6px; padding: 0 16px 16px; }
 .wtab {
   background: var(--wtab-bg);
   border: 1.5px solid var(--wtab-border);
-  border-radius: 12px;
-  padding: 10px 6px;
+  border-radius: 10px;
+  padding: 7px 4px;
   cursor: pointer;
   text-align: center;
   transition: all 0.2s;
@@ -424,8 +424,8 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
   background: var(--wtab-active-bg);
   animation: tabPulse 2s ease-in-out infinite;
 }
-.wtab .wt-emoji { font-size: 20px; }
-.wtab .wt-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-faint); margin-top: 4px; }
+.wtab .wt-emoji { font-size: 16px; line-height: 1; }
+.wtab .wt-label { font-size: 8px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-faint); margin-top: 3px; }
 .wtab.active .wt-label { color: var(--tc); }
 
 /* ─── PHASE BANNER ──────────────────────────────────────────────────────────── */
@@ -989,7 +989,8 @@ const API = 'https://helio-tasks-api.onrender.com';
 const GH_REPO = 'hdohnert-helio/ethan-hoops';
 
 const WEEKS = [
-  {range:'Wks 1–2',theme:'Ball Handling',emoji:'🤜',color:'#FF6B35',accent:'#FFD23F',tagline:'Make the ball your best friend',
+  // ── Week 1 ──
+  {label:'Wk 1',theme:'Ball Handling Basics',emoji:'🤜',color:'#FF6B35',accent:'#FFD23F',tagline:'Make the ball your best friend',
    days:[
     {label:'Day 1',drills:[
       {name:'Stationary Dribbling',dur:5,tip:'Right hand, left hand, alternating. Pound it HARD — eyes up, not down at the ball.',icon:'👀'},
@@ -1010,7 +1011,29 @@ const WEEKS = [
       {name:'Free Play',dur:5,tip:'End it happy.',icon:'😄'},
     ]},
   ]},
-  {range:'Wks 3–4',theme:'Shooting Form',emoji:'🎯',color:'#E63946',accent:'#06D6A0',tagline:'One hand. Cookie jar. Every time.',
+  // ── Week 2 ──
+  {label:'Wk 2',theme:'Ball Handling Level Up',emoji:'🤜',color:'#FF6B35',accent:'#FFD23F',tagline:'Sharper handles, eyes up',
+   days:[
+    {label:'Day 1',drills:[
+      {name:'Stationary Dribbling',dur:5,tip:'Right hand, left hand, alternating. Pound it HARD — eyes up, not down at the ball.',icon:'👀'},
+      {name:'Crossover Practice',dur:5,tip:'Low and hard crossover — push the ball across your body, not up. Stay in an athletic stance.',icon:'🔀'},
+      {name:'BEEF Shooting (close)',dur:10,tip:'3–5 feet from hoop only. Balance → Eyes on rim → Elbow under ball → Follow through like reaching into a cookie jar.',icon:'🍪'},
+      {name:'Free Play',dur:5,tip:'Just shoot around and have fun. No coaching — just hoop.',icon:'😄'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Figure-8 Speed Run',dur:5,tip:'Push yourself — go faster than last week. Count your reps in 60 seconds.',icon:'⏱️'},
+      {name:'Between Legs Dribble',dur:5,tip:'Stationary first. Right to left, then left to right. Keep your knees bent and eyes up.',icon:'🦵'},
+      {name:'BEEF Shooting (close)',dur:10,tip:'Same as Day 1. Lock in that follow-through every single time.',icon:'🍪'},
+      {name:'Free Play',dur:5,tip:'His choice, his rules.',icon:'😄'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Full Dribbling Combo',dur:10,tip:'String it all together: stationary, crossover, figure-8, between legs. Eyes up the whole time.',icon:'🔀'},
+      {name:'BEEF Shooting (both sides)',dur:15,tip:'Move around: straight on, left side, right side. Keep that form locked in.',icon:'🍪'},
+      {name:'Free Play',dur:5,tip:'End it happy.',icon:'😄'},
+    ]},
+  ]},
+  // ── Week 3 ──
+  {label:'Wk 3',theme:'Shooting Form',emoji:'🎯',color:'#E63946',accent:'#06D6A0',tagline:'One hand. Cookie jar. Every time.',
    days:[
     {label:'Day 1',drills:[
       {name:'One-Hand Form Shooting',dur:10,tip:'Right hand only, 3 feet from basket. Left hand off the ball. Just flick it in. Build the muscle memory.',icon:'☝️'},
@@ -1031,7 +1054,30 @@ const WEEKS = [
       {name:'Free Play',dur:5,tip:'Done. Go have fun.',icon:'😄'},
     ]},
   ]},
-  {range:'Wks 5–6',theme:'Footwork & Layups',emoji:'👟',color:'#7209B7',accent:'#F72585',tagline:"Don't travel. Don't think. Just move.",
+  // ── Week 4 ──
+  {label:'Wk 4',theme:'Shooting Consistency',emoji:'🎯',color:'#E63946',accent:'#06D6A0',tagline:'Same form every single rep',
+   days:[
+    {label:'Day 1',drills:[
+      {name:'One-Hand Form Shooting',dur:7,tip:'Right hand only, 3 feet from basket. Left hand off the ball. Just flick it in. Build the muscle memory.',icon:'☝️'},
+      {name:'Mid-Range Shots',dur:13,tip:'Step back to 6–8 feet. Straight on, left side, right side. BEEF every single shot.',icon:'📐'},
+      {name:'Free Throws',dur:5,tip:'Same exact spot every time. Build the routine — bounce it twice, deep breath, shoot.',icon:'🔁'},
+      {name:'Free Play',dur:5,tip:'Go have fun.',icon:'😄'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Ball Handling Warmup',dur:5,tip:'Week 1 drills — stationary dribble and figure-8. Stay sharp.',icon:'🔥'},
+      {name:'Dribble into Shot',dur:10,tip:'2 dribbles, hard stop, shoot. Keep it simple. Don\'t rush the shot.',icon:'⏸️'},
+      {name:'Beat Yesterday',dur:10,tip:'Pick a spot 6–8 feet out. How many makes in 2 minutes? Try to beat it.',icon:'📈'},
+      {name:'Free Play',dur:5,tip:'Shoot wherever he wants.',icon:'😄'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Form Shooting (close)',dur:5,tip:'Back to basics — lock in that perfect form before moving out.',icon:'☝️'},
+      {name:'Mid-Range Both Sides',dur:10,tip:'Left side matters as much as right. Don\'t skip it.',icon:'↔️'},
+      {name:'Free Throws',dur:10,tip:'Routine, routine, routine. Same spot, same bounce, same breath.',icon:'🔁'},
+      {name:'Free Play',dur:5,tip:'Done. Go have fun.',icon:'😄'},
+    ]},
+  ]},
+  // ── Week 5 ──
+  {label:'Wk 5',theme:'Footwork & Layups',emoji:'👟',color:'#7209B7',accent:'#F72585',tagline:"Don't travel. Don't think. Just move.",
    days:[
     {label:'Day 1',drills:[
       {name:'Pivot Practice',dur:5,tip:'Plant one foot, swing the other. Left foot pivot, right foot pivot. This stops traveling calls.',icon:'🦶'},
@@ -1052,7 +1098,29 @@ const WEEKS = [
       {name:'Free Play',dur:5,tip:'He earned it.',icon:'😄'},
     ]},
   ]},
-  {range:'Wks 7–8',theme:'Game Time',emoji:'🏆',color:'#059669',accent:'#FFD23F',tagline:'Put it all together. Play like a baller.',
+  // ── Week 6 ──
+  {label:'Wk 6',theme:'Layup Mastery',emoji:'👟',color:'#7209B7',accent:'#F72585',tagline:'Both hands. Every angle.',
+   days:[
+    {label:'Day 1',drills:[
+      {name:'Pivot Practice',dur:5,tip:'Plant one foot, swing the other. Left foot pivot, right foot pivot. This stops traveling calls.',icon:'🦶'},
+      {name:'Full Speed Layups (both sides)',dur:15,tip:'Alternate right and left every rep. Count made layups — try to get 10 each side.',icon:'💨'},
+      {name:'Free Play',dur:5,tip:'He earned it.',icon:'😄'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Ball Handling Warmup',dur:5,tip:'Crossovers, figure-8, alternating. Keep the handle sharp.',icon:'🔥'},
+      {name:'Dribble + Layup (right)',dur:10,tip:'Start at half court. 2–3 dribbles, full speed, layup. Right side — get reps in.',icon:'➡️'},
+      {name:'Dribble + Layup (left)',dur:10,tip:"Left side. It'll look rough. Do it anyway — this is how you get better.",icon:'⬅️'},
+      {name:'Free Play',dur:5,tip:'End on a smile.',icon:'😄'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Pivot + Shot',dur:7,tip:'Grab the ball, pivot to face the basket, shoot. Simulates catching a pass.',icon:'🔄'},
+      {name:'Full Speed Layups',dur:10,tip:'Alternate right and left every rep. Count made layups — try to get 10 each side.',icon:'💨'},
+      {name:'Mid-Range Shooting',dur:8,tip:'His choice of spots. Keep BEEF form locked in.',icon:'🎯'},
+      {name:'Free Play',dur:5,tip:'He earned it.',icon:'😄'},
+    ]},
+  ]},
+  // ── Week 7 ──
+  {label:'Wk 7',theme:'Game Time',emoji:'🏆',color:'#059669',accent:'#FFD23F',tagline:'Put it all together.',
    days:[
     {label:'Day 1',drills:[
       {name:'Ball Handling Warmup',dur:5,tip:'Best moves from weeks 1–2. Stationary, figure-8, crossovers. Eyes UP.',icon:'🔥'},
@@ -1070,6 +1138,27 @@ const WEEKS = [
       {name:'Full Warmup',dur:5,tip:'Everything: dribbling, figure-8, pivots, one layup each side.',icon:'🔥'},
       {name:'Make 5 at 5 Spots',dur:10,tip:'5 different spots around the key. Make 5 at each before moving. Go as fast as possible.',icon:'🎮'},
       {name:'1-on-1 Full Game',dur:15,tip:'Play to 11 by 1s. Real defense. He knows what he\'s doing now — let him prove it.',icon:'🏆'},
+    ]},
+  ]},
+  // ── Week 8 ──
+  {label:'Wk 8',theme:'Baller Status',emoji:'🏆',color:'#059669',accent:'#FFD23F',tagline:'Play like you own the court.',
+   days:[
+    {label:'Day 1',drills:[
+      {name:'Full Skill Warmup',dur:5,tip:'Dribbling, figure-8, pivots. Run through the hits.',icon:'🔥'},
+      {name:'Make 5 Game',dur:10,tip:"Pick a spot. Can't move until he makes 5. Then next spot. How many spots in 10 minutes?",icon:'🎮'},
+      {name:'Full Speed Layups',dur:5,tip:'Alternate right and left every rep. Full speed — no slowing down.',icon:'💨'},
+      {name:'1-on-1 vs You',dur:10,tip:'Play real defense. Make him earn every bucket. He\'s ready.',icon:'🤜'},
+    ]},
+    {label:'Day 2',drills:[
+      {name:'Ball Handling Warmup',dur:5,tip:'Best moves from week 1–2. Stationary, figure-8, crossovers. Eyes UP.',icon:'🔥'},
+      {name:'Free Throw Challenge',dur:10,tip:'10 shots from the line. Track his percentage. Beat last week\'s number.',icon:'📊'},
+      {name:'Dribble + Shot Combo',dur:10,tip:'3 dribbles from different spots, pull up and shoot. Both sides.',icon:'🎯'},
+      {name:'1-on-1 vs You',dur:10,tip:"Play hard. He's put in 8 weeks — let him show you what he's got.",icon:'🤜'},
+    ]},
+    {label:'Day 3',drills:[
+      {name:'Full Warmup',dur:5,tip:'Everything: dribbling, figure-8, pivots, one layup each side.',icon:'🔥'},
+      {name:'Make 5 at 5 Spots',dur:10,tip:'5 different spots around the key. Make 5 at each before moving. Go as fast as possible.',icon:'🎮'},
+      {name:'1-on-1 Full Game',dur:15,tip:'Play to 11 by 1s. Real defense. This is the final test — let him prove everything he\'s learned.',icon:'🏆'},
     ]},
   ]},
 ];
@@ -1213,7 +1302,7 @@ function renderWeekTabs() {
   el.innerHTML = WEEKS.map((w,i) => `
     <div class="wtab${i===activeWeek?' active':''}" style="--tc:${w.color}" onclick="selectWeek(${i})">
       <div class="wt-emoji">${w.emoji}</div>
-      <div class="wt-label">${w.range}</div>
+      <div class="wt-label">${w.label}</div>
     </div>`).join('');
 }
 
@@ -1221,7 +1310,7 @@ function renderPhase() {
   const w = WEEKS[activeWeek];
   document.getElementById('phase-banner').style.setProperty('--tc', w.color);
   document.getElementById('phase-banner').style.setProperty('--ta', w.accent);
-  document.getElementById('phase-name').textContent = w.theme;
+  document.getElementById('phase-name').textContent = `Week ${activeWeek + 1} · ${w.theme}`;
   document.getElementById('phase-tagline').textContent = w.tagline;
   // timer color
   document.documentElement.style.setProperty('--tc', w.color);
@@ -1279,7 +1368,7 @@ function renderProgress() {
   const total = w.days.reduce((s,d)=>s+d.drills.length,0);
   const done = w.days.reduce((s,d,di)=>s+d.drills.filter((_,dri)=>pd().completed[dKey(activeWeek,di,dri)]).length,0);
   const pct = total ? Math.round((done/total)*100) : 0;
-  document.getElementById('prog-label').textContent = `Week ${activeWeek*2+1}–${activeWeek*2+2} Progress`;
+  document.getElementById('prog-label').textContent = `Week ${activeWeek + 1} Progress`;
   document.getElementById('prog-pct').textContent = pct + '%';
   document.getElementById('prog-fill').style.width = pct + '%';
 }
