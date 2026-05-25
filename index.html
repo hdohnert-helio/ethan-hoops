@@ -93,29 +93,29 @@
 }
 
 [data-theme="light"] {
-  --bg: #FFF8F3;
-  --bg2: #FFF0E6;
+  --bg: #F5F7FA;
+  --bg2: #EEF2F7;
   --card-bg: #FFFFFF;
-  --card-bg-hover: #FFF5EE;
+  --card-bg-hover: #F8FAFC;
   --card-border: rgba(0,0,0,0.08);
   --card-border-hover: rgba(255,107,53,0.35);
-  --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
   --text: #1a1a2e;
   --text-muted: rgba(26,26,46,0.5);
   --text-dim: rgba(26,26,46,0.35);
   --text-faint: rgba(26,26,46,0.45);
   --text-sub: rgba(26,26,46,0.55);
   --text-soft: rgba(26,26,46,0.45);
-  --header-bg: linear-gradient(180deg, #FFE8D6 0%, #FFF8F3 100%);
-  --player-screen-bg: radial-gradient(ellipse at 50% 30%, #FFE0CC 0%, #FFF8F3 70%);
-  --section-hdr: rgba(26,26,46,0.45);
+  --header-bg: linear-gradient(180deg, #E8EDF5 0%, #F5F7FA 100%);
+  --player-screen-bg: radial-gradient(ellipse at 50% 30%, #DDE4F0 0%, #EEF2F7 70%);
+  --section-hdr: #4a5568;
   --streak-bg: rgba(255,210,63,0.18);
   --streak-border: rgba(255,210,63,0.4);
-  --switcher-bg: rgba(0,0,0,0.04);
+  --switcher-bg: rgba(0,0,0,0.05);
   --switcher-border: rgba(0,0,0,0.1);
-  --prog-bar-bg: rgba(0,0,0,0.07);
+  --prog-bar-bg: rgba(0,0,0,0.08);
   --tip-border: rgba(0,0,0,0.05);
-  --tip-bg: rgba(255,107,53,0.04);
+  --tip-bg: rgba(0,0,0,0.03);
   --done-card-bg: rgba(0,0,0,0.02);
   --done-card-border: rgba(0,0,0,0.04);
   --timer-bar-bg: #FFFFFF;
@@ -123,20 +123,20 @@
   --timer-prog-bg: rgba(0,0,0,0.07);
   --shot-box-bg: #FFFFFF;
   --shot-box-border: rgba(0,0,0,0.08);
-  --shot-stat-bg: rgba(255,107,53,0.06);
+  --shot-stat-bg: rgba(0,0,0,0.04);
   --sbtn-miss-bg: rgba(0,0,0,0.07);
   --sbtn-miss-hover: rgba(0,0,0,0.12);
   --sbtn-miss-color: rgba(26,26,46,0.55);
   --sbtn-undo-bg: rgba(0,0,0,0.04);
   --sbtn-undo-color: rgba(26,26,46,0.4);
   --pr-border: rgba(0,0,0,0.06);
-  --streak-dot-bg: rgba(0,0,0,0.07);
+  --streak-dot-bg: rgba(0,0,0,0.08);
   --beef-toggle-bg: #FFFFFF;
   --beef-toggle-border: rgba(0,0,0,0.08);
   --beef-card-bg: #FFFFFF;
   --beef-card-border: rgba(0,0,0,0.08);
   --tips-box-bg: #FFFFFF;
-  --tips-box-border: rgba(0,0,0,0.06);
+  --tips-box-border: rgba(0,0,0,0.08);
   --tip-row-border: rgba(0,0,0,0.05);
   --tip-strong: rgba(26,26,46,0.85);
   --tip-p: rgba(26,26,46,0.5);
@@ -156,16 +156,16 @@
   --wtab-border: rgba(0,0,0,0.08);
   --wtab-hover-bg: rgba(255,107,53,0.06);
   --wtab-active-bg: rgba(255,107,53,0.08);
-  --drill-tip-bg: rgba(255,107,53,0.05);
+  --drill-tip-bg: rgba(0,0,0,0.03);
   --drill-expand-color: rgba(26,26,46,0.3);
   --check-ring-border: rgba(0,0,0,0.18);
   --video-btn-bg: rgba(255,107,53,0.12);
   --video-btn-border: rgba(255,107,53,0.35);
   --video-btn-color: #CC4400;
   --phase-p-color: rgba(26,26,46,0.5);
-  --bg-gradient-a: #FFF8F3;
-  --bg-gradient-b: #FFE8D6;
-  --bg-gradient-c: #FFF0E8;
+  --bg-gradient-a: #F5F7FA;
+  --bg-gradient-b: #EEF2F7;
+  --bg-gradient-c: #E8EDF5;
 }
 
 /* ─── ANIMATED GRADIENT BG ─────────────────────────────────────────────────── */
@@ -882,6 +882,60 @@ button { cursor:pointer;border:none;background:none;color:inherit;font-family:in
 </div>
 
 <script>
+// ─── DRILL VIDEO LOOKUP ────────────────────────────────────────────────────
+function getDrillVideo(name) {
+  const n = name.toLowerCase();
+  // Layups (check before generic dribble)
+  if (n.includes('layup') || n.includes('lay up') || n.includes('lay-up')) {
+    if (n.includes('full speed') || n.includes('dribble +') || n.includes('lines')) {
+      return 'https://www.youtube.com/watch?v=wQClsdt4jI4'; // Full Court Layups - youth
+    }
+    return 'https://www.youtube.com/watch?v=YYLvlPQgPrs'; // How To Teach The Lay Up - youth 5 min
+  }
+  // Stationary dribbling
+  if (n.includes('stationary dribbl')) {
+    return 'https://www.youtube.com/watch?v=1zRQwaN96rk'; // 17 Stationary Dribbling Drills - Youth to Pros
+  }
+  // Figure-8
+  if (n.includes('figure') || n.includes('figure-8') || n.includes('figure 8')) {
+    return 'https://www.youtube.com/watch?v=-vafClV92A4'; // Figure 8 Dribble - Beginner Ball Handling
+  }
+  // BEEF shooting
+  if (n.includes('beef')) {
+    return 'https://www.youtube.com/watch?v=jtS8Sv48f1Q'; // Youth Basketball - BEEF Shooting
+  }
+  // Free throws
+  if (n.includes('free throw') || n.includes('free-throw')) {
+    return 'https://www.youtube.com/watch?v=lnuZNZPDvaY'; // Fundamentals Of The Free Throw - Jr. NBA
+  }
+  // One-hand / form shooting
+  if (n.includes('one-hand') || n.includes('one hand') || n.includes('form shoot') || n.includes('form (close)')) {
+    return 'https://www.youtube.com/watch?v=drjHBtMgbF4'; // One Hand Form Shot - PSB Drills & Skills
+  }
+  // Dribble into shot / pull-up / dribble + shot combo
+  if (n.includes('dribble into') || n.includes('pull-up') || n.includes('dribble + shot') || n.includes('dribble+shot')) {
+    return 'https://www.youtube.com/watch?v=4Ytt9DOK1sQ'; // 2 Dribble Pull Up Shooting Drills
+  }
+  // Pivot
+  if (n.includes('pivot')) {
+    return 'https://www.youtube.com/watch?v=YyU3FuPMzeU'; // YOUTH PIVOTING DRILLS - 3 Drills to Avoid Traveling
+  }
+  // Ball handling warmup / full warmup / dribbling combos / dribble walks
+  if (n.includes('warmup') || n.includes('warm up') || n.includes('dribble walk') || n.includes('dribbling combo') || n.includes('full skill') || n.includes('full warmup')) {
+    return 'https://www.youtube.com/watch?v=UVAz2aASZx4'; // 7 Best Youth Basketball Dribbling Drills
+  }
+  // Mid-range / beat yesterday / make 5 game
+  if (n.includes('mid-range') || n.includes('mid range') || n.includes('beat yesterday') || n.includes('make 5') || n.includes('shot combo')) {
+    return 'https://www.youtube.com/watch?v=EztEhywHzko'; // 5 Beginner Basketball Shooting Drills
+  }
+  // 1-on-1 / free throw challenge / free throw challenge
+  if (n.includes('1-on-1') || n.includes('challenge')) {
+    return 'https://www.youtube.com/watch?v=lnuZNZPDvaY'; // Free throw fundamentals
+  }
+  // Default: general youth dribbling/skills
+  return 'https://www.youtube.com/watch?v=UVAz2aASZx4'; // 7 Best Youth Basketball Dribbling Drills
+}
+
 // ─── DATA ──────────────────────────────────────────────────────────────────
 const API = 'https://helio-tasks-api.onrender.com';
 const GH_REPO = 'hdohnert-helio/ethan-hoops';
@@ -1126,8 +1180,7 @@ function renderDrills() {
   el.innerHTML = drills.map((d,i) => {
     const done = !!pd().completed[dKey(activeWeek,activeDay,i)];
     const expanded = expandedDrill === i;
-    const videoQuery = encodeURIComponent(d.name + ' basketball drill for kids');
-    const videoUrl = `https://www.youtube.com/results?search_query=${videoQuery}`;
+    const videoUrl = getDrillVideo(d.name);
     return `<div class="drill-card${done?' done':''}${expanded?' expanded':''}" onclick="drillExpand(${i})">
       <div class="drill-top">
         <div class="check-ring${done?' checked':''}" onclick="event.stopPropagation();markDrillDone(${i})">
