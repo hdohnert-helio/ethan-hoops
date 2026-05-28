@@ -11,151 +11,31 @@
 
 /* ─── THEME VARIABLES ─────────────────────────────────────────────────────── */
 :root {
-  --wc: #FF6B35;
-  --wa: #FFD23F;
+  --bg: #050508;
+  --surface: rgba(255,255,255,0.04);
+  --surface-hover: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.07);
+  --border-top: rgba(255,255,255,0.14);
+  --text: #ffffff;
+  --text-sub: rgba(255,255,255,0.55);
+  --text-dim: rgba(255,255,255,0.25);
   --tc: #FF6B35;
   --ta: #FFD23F;
-
-  /* Dark theme defaults */
-  --bg: #07070f;
-  --bg2: #0f0f1a;
-  --card-bg: rgba(255,255,255,0.04);
-  --card-bg-hover: rgba(255,255,255,0.07);
-  --card-border: rgba(255,255,255,0.08);
-  --card-border-hover: rgba(255,255,255,0.18);
-  --card-shadow: none;
-  --text: #ffffff;
-  --text-muted: rgba(255,255,255,0.4);
-  --text-dim: rgba(255,255,255,0.25);
-  --text-faint: rgba(255,255,255,0.3);
-  --text-sub: rgba(255,255,255,0.5);
-  --text-soft: rgba(255,255,255,0.35);
-  --header-bg: transparent;
-  --section-hdr: rgba(255,255,255,0.3);
-  --streak-bg: rgba(255,210,63,0.12);
-  --streak-border: rgba(255,210,63,0.25);
-  --switcher-bg: rgba(255,255,255,0.06);
-  --switcher-border: rgba(255,255,255,0.1);
-  --prog-bar-bg: rgba(255,255,255,0.07);
-  --tip-border: rgba(255,255,255,0.05);
-  --tip-bg: rgba(255,255,255,0.04);
-  --done-card-bg: rgba(255,255,255,0.02);
-  --done-card-border: rgba(255,255,255,0.04);
-  --timer-bar-bg: rgba(255,255,255,0.04);
-  --timer-bar-border: rgba(255,255,255,0.08);
-  --timer-prog-bg: rgba(255,255,255,0.07);
-  --shot-box-bg: rgba(255,255,255,0.04);
-  --shot-box-border: rgba(255,255,255,0.08);
-  --shot-stat-bg: rgba(255,255,255,0.06);
-  --sbtn-miss-bg: rgba(255,255,255,0.08);
-  --sbtn-miss-hover: rgba(255,255,255,0.13);
-  --sbtn-miss-color: rgba(255,255,255,0.5);
-  --sbtn-undo-bg: rgba(255,255,255,0.05);
-  --sbtn-undo-color: rgba(255,255,255,0.3);
-  --pr-border: rgba(255,255,255,0.06);
-  --streak-dot-bg: rgba(255,255,255,0.07);
-  --beef-toggle-bg: rgba(255,255,255,0.04);
-  --beef-toggle-border: rgba(255,255,255,0.08);
-  --beef-card-bg: rgba(255,255,255,0.04);
-  --beef-card-border: rgba(255,255,255,0.08);
-  --tips-box-bg: rgba(255,255,255,0.03);
-  --tips-box-border: rgba(255,255,255,0.06);
-  --tip-row-border: rgba(255,255,255,0.05);
-  --tip-strong: rgba(255,255,255,0.8);
-  --tip-p: rgba(255,255,255,0.4);
-  --dtab-border: rgba(255,255,255,0.12);
-  --dtab-color: rgba(255,255,255,0.4);
-  --dtab-hover-bg: rgba(255,255,255,0.07);
-  --done-day-border: rgba(255,255,255,0.25);
-  --done-day-color: rgba(255,255,255,0.55);
-  --footer-color: rgba(255,255,255,0.15);
-  --tbtn-reset-bg: rgba(255,255,255,0.08);
-  --tbtn-reset-color: rgba(255,255,255,0.6);
-  --tbtn-next-bg: rgba(255,255,255,0.08);
-  --tbtn-next-color: rgba(255,255,255,0.6);
-  --tbtn-reset-hover: rgba(255,255,255,0.14);
-  --tbtn-next-hover: rgba(255,255,255,0.14);
-  --drill-tip-bg: rgba(255,255,255,0.04);
-  --drill-expand-color: rgba(255,255,255,0.25);
-  --check-ring-border: rgba(255,255,255,0.18);
-  --video-btn-bg: rgba(255,107,53,0.15);
-  --video-btn-border: rgba(255,107,53,0.3);
-  --video-btn-color: #FF6B35;
-  --phase-p-color: rgba(255,255,255,0.5);
-  --drill-num-opacity: 0.18;
 }
 
 [data-theme="light"] {
   --bg: #F0F4F8;
-  --bg2: #E6ECF3;
-  --card-bg: #FFFFFF;
-  --card-bg-hover: #F8FAFC;
-  --card-border: rgba(0,0,0,0.08);
-  --card-border-hover: rgba(0,0,0,0.18);
-  --card-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  --text: #1a1a2e;
-  --text-muted: rgba(26,26,46,0.5);
-  --text-dim: rgba(26,26,46,0.35);
-  --text-faint: rgba(26,26,46,0.45);
-  --text-sub: rgba(26,26,46,0.55);
-  --text-soft: rgba(26,26,46,0.45);
-  --header-bg: transparent;
-  --section-hdr: #4a5568;
-  --streak-bg: rgba(255,210,63,0.18);
-  --streak-border: rgba(255,210,63,0.4);
-  --switcher-bg: rgba(0,0,0,0.05);
-  --switcher-border: rgba(0,0,0,0.1);
-  --prog-bar-bg: rgba(0,0,0,0.08);
-  --tip-border: rgba(0,0,0,0.05);
-  --tip-bg: rgba(0,0,0,0.03);
-  --done-card-bg: rgba(0,0,0,0.02);
-  --done-card-border: rgba(0,0,0,0.04);
-  --timer-bar-bg: #FFFFFF;
-  --timer-bar-border: rgba(0,0,0,0.08);
-  --timer-prog-bg: rgba(0,0,0,0.07);
-  --shot-box-bg: #FFFFFF;
-  --shot-box-border: rgba(0,0,0,0.08);
-  --shot-stat-bg: rgba(0,0,0,0.04);
-  --sbtn-miss-bg: rgba(0,0,0,0.07);
-  --sbtn-miss-hover: rgba(0,0,0,0.12);
-  --sbtn-miss-color: rgba(26,26,46,0.55);
-  --sbtn-undo-bg: rgba(0,0,0,0.04);
-  --sbtn-undo-color: rgba(26,26,46,0.4);
-  --pr-border: rgba(0,0,0,0.06);
-  --streak-dot-bg: rgba(0,0,0,0.08);
-  --beef-toggle-bg: #FFFFFF;
-  --beef-toggle-border: rgba(0,0,0,0.08);
-  --beef-card-bg: #FFFFFF;
-  --beef-card-border: rgba(0,0,0,0.08);
-  --tips-box-bg: #FFFFFF;
-  --tips-box-border: rgba(0,0,0,0.08);
-  --tip-row-border: rgba(0,0,0,0.05);
-  --tip-strong: rgba(26,26,46,0.85);
-  --tip-p: rgba(26,26,46,0.5);
-  --dtab-border: rgba(0,0,0,0.12);
-  --dtab-color: rgba(26,26,46,0.45);
-  --dtab-hover-bg: rgba(0,0,0,0.05);
-  --done-day-border: rgba(0,0,0,0.2);
-  --done-day-color: rgba(26,26,46,0.5);
-  --footer-color: rgba(26,26,46,0.3);
-  --tbtn-reset-bg: rgba(0,0,0,0.07);
-  --tbtn-reset-color: rgba(26,26,46,0.6);
-  --tbtn-next-bg: rgba(0,0,0,0.07);
-  --tbtn-next-color: rgba(26,26,46,0.6);
-  --tbtn-reset-hover: rgba(0,0,0,0.12);
-  --tbtn-next-hover: rgba(0,0,0,0.12);
-  --drill-tip-bg: rgba(0,0,0,0.03);
-  --drill-expand-color: rgba(26,26,46,0.3);
-  --check-ring-border: rgba(0,0,0,0.18);
-  --video-btn-bg: rgba(255,107,53,0.12);
-  --video-btn-border: rgba(255,107,53,0.35);
-  --video-btn-color: #CC4400;
-  --phase-p-color: rgba(26,26,46,0.5);
-  --drill-num-opacity: 0.12;
+  --surface: #ffffff;
+  --surface-hover: #f8f9fb;
+  --border: rgba(0,0,0,0.07);
+  --border-top: rgba(0,0,0,0.12);
+  --text: #0d0d1a;
+  --text-sub: rgba(13,13,26,0.55);
+  --text-dim: rgba(13,13,26,0.3);
 }
 
 /* ─── BASE ──────────────────────────────────────────────────────────────────── */
-body {
+html, body {
   background: var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
@@ -164,85 +44,89 @@ body {
   transition: background-color 0.4s, color 0.4s;
 }
 
-button { cursor:pointer;border:none;background:none;color:inherit;font-family:inherit; }
-button:active { transform: scale(0.96); }
-a { transition: 0.18s ease; }
-* { transition: background-color 0.18s ease, border-color 0.18s ease; }
-
-/* ─── THEME TOGGLE ──────────────────────────────────────────────────────────── */
-.theme-toggle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--switcher-bg);
-  border: 1px solid var(--switcher-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  cursor: pointer;
-  transition: all 0.25s;
-  flex-shrink: 0;
-}
-.theme-toggle:hover {
-  background: var(--card-bg-hover);
-  transform: rotate(20deg) scale(1.1);
-}
-.theme-toggle:active { transform: scale(0.96) rotate(10deg); }
-
-/* ─── FLOATING BASKETBALLS ──────────────────────────────────────────────────── */
-@keyframes floatBall1 {
-  0%   { transform: translateY(0px) rotate(0deg); }
-  50%  { transform: translateY(-40px) rotate(180deg); }
-  100% { transform: translateY(0px) rotate(360deg); }
-}
-@keyframes floatBall2 {
-  0%   { transform: translateY(0px) rotate(0deg); }
-  60%  { transform: translateY(-60px) rotate(240deg); }
-  100% { transform: translateY(0px) rotate(360deg); }
-}
-@keyframes floatBall3 {
-  0%   { transform: translateY(0px) rotate(0deg); }
-  40%  { transform: translateY(-30px) rotate(120deg); }
-  100% { transform: translateY(0px) rotate(360deg); }
-}
-
-.bg-ball {
-  position: absolute;
+/* App background top glow using phase color */
+body::before {
+  content: '';
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, var(--tc) 0%, transparent 70%);
+  opacity: 0.07;
   pointer-events: none;
-  user-select: none;
   z-index: 0;
-  opacity: 0.06;
+  transition: background 0.5s;
 }
-.bg-ball:nth-child(1) { font-size: 90px;  top: 8%;  left: 5%;  animation: floatBall1 7s ease-in-out infinite; }
-.bg-ball:nth-child(2) { font-size: 130px; top: 60%; right: 4%; animation: floatBall2 9s ease-in-out infinite 1.5s; }
-.bg-ball:nth-child(3) { font-size: 60px;  top: 40%; left: 15%; animation: floatBall3 6s ease-in-out infinite 0.8s; }
+
+button { cursor:pointer;border:none;background:none;color:inherit;font-family:inherit; }
+button { transition: all 0.15s ease; }
+button:active { transform: scale(0.95); opacity: 0.85; }
 
 /* ─── PLAYER SELECT SCREEN ──────────────────────────────────────────────────── */
 #player-screen {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: #07070f;
+  background: #050508;
   overflow: hidden;
   display: flex;
   align-items: stretch;
 }
 
+/* Floating basketball decorations */
+#player-screen::before,
+#player-screen::after {
+  content: '🏀';
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 1;
+}
+#player-screen::before {
+  font-size: 60px;
+  top: 15%;
+  left: 8%;
+  animation: psFloat 6s ease-in-out infinite;
+}
+#player-screen::after {
+  font-size: 40px;
+  bottom: 20%;
+  right: 6%;
+  animation: psFloat 9s ease-in-out infinite 1.5s;
+}
+
+@keyframes psFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.ps-ball-3 {
+  position: absolute;
+  font-size: 30px;
+  top: 65%;
+  left: 45%;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+  animation: psFloat 12s ease-in-out infinite 3s;
+}
+
 .ps-who {
   position: absolute;
-  top: 32px;
+  top: 36px;
   width: 100%;
   text-align: center;
   font-size: 11px;
   letter-spacing: 3px;
-  opacity: 0.4;
+  opacity: 0.35;
   text-transform: uppercase;
   color: #fff;
   z-index: 10;
   pointer-events: none;
   font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .ps-theme-btn {
@@ -250,6 +134,28 @@ a { transition: 0.18s ease; }
   top: 20px;
   right: 20px;
   z-index: 20;
+}
+
+/* Center divider */
+.ps-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+.ps-divider-ball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  z-index: 6;
+  pointer-events: none;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.2));
 }
 
 /* Two half zones */
@@ -263,51 +169,43 @@ a { transition: 0.18s ease; }
   cursor: pointer;
   overflow: hidden;
   min-height: 100vh;
+  transition: background 0.3s ease;
 }
 
 .ps-half-ethan {
-  background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.28) 0%, rgba(7,7,15,0.0) 70%);
+  background: radial-gradient(ellipse at 20% 50%, rgba(255,107,53,0.35) 0%, transparent 65%);
+}
+.ps-half-ethan:hover {
+  background: radial-gradient(ellipse at 20% 50%, rgba(255,107,53,0.45) 0%, transparent 65%);
+  transform: scale(1.02);
+  transition: background 0.3s ease, transform 0.25s ease;
 }
 
 .ps-half-justin {
-  background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.28) 0%, rgba(7,7,15,0.0) 70%);
+  background: radial-gradient(ellipse at 80% 50%, rgba(59,130,246,0.35) 0%, transparent 65%);
+}
+.ps-half-justin:hover {
+  background: radial-gradient(ellipse at 80% 50%, rgba(59,130,246,0.45) 0%, transparent 65%);
+  transform: scale(1.02);
+  transition: background 0.3s ease, transform 0.25s ease;
 }
 
-/* Diagonal overlap strip for visual continuity */
-.ps-divider {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  width: 2px;
-  transform: translateX(-50%) skewX(-15deg);
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
-  z-index: 5;
-  pointer-events: none;
-}
+.ps-half:hover .ps-content { transform: scale(1.02); }
 
 .ps-watermark {
   position: absolute;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 200px;
+  font-size: 280px;
   line-height: 1;
   pointer-events: none;
   user-select: none;
   z-index: 0;
-}
-.ps-half-ethan .ps-watermark {
-  color: #FF6B35;
-  opacity: 0.05;
-  left: -10px;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.ps-half-justin .ps-watermark {
-  color: #3B82F6;
-  opacity: 0.05;
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+.ps-half-ethan .ps-watermark { color: rgba(255,107,53,0.06); }
+.ps-half-justin .ps-watermark { color: rgba(59,130,246,0.06); }
 
 .ps-content {
   position: relative;
@@ -315,113 +213,142 @@ a { transition: 0.18s ease; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  /* nudge ethan left, justin right */
+  gap: 10px;
+  transition: transform 0.25s ease;
+  will-change: transform;
 }
-.ps-half-ethan .ps-content { transform: translateX(-18%); }
-.ps-half-justin .ps-content { transform: translateX(18%); }
 
-.ps-emoji { font-size: 48px; line-height: 1; }
+.ps-emoji { font-size: 52px; line-height: 1; }
 .ps-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 52px;
+  font-size: 72px;
   letter-spacing: 4px;
   line-height: 1;
 }
-.ps-half-ethan .ps-name { color: #FF6B35; text-shadow: 0 0 40px rgba(255,107,53,0.4); }
-.ps-half-justin .ps-name { color: #3B82F6; text-shadow: 0 0 40px rgba(59,130,246,0.4); }
+.ps-half-ethan .ps-name { color: #FF6B35; text-shadow: 0 0 60px rgba(255,107,53,0.5); }
+.ps-half-justin .ps-name { color: #3B82F6; text-shadow: 0 0 60px rgba(59,130,246,0.5); }
 .ps-badge {
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-size: 10px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  opacity: 0.4;
-  color: #fff;
+  color: rgba(255,255,255,0.25);
   font-weight: 600;
 }
 
-/* ─── MAIN APP ──────────────────────────────────────────────────────────────── */
-#app { display: none; min-height: 100vh; padding-bottom: 24px; }
+/* Theme toggle on player screen */
+.theme-toggle-ps {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.theme-toggle-ps:hover { background: rgba(255,255,255,0.14); transform: rotate(20deg) scale(1.1); }
 
-/* ─── APP HEADER ────────────────────────────────────────────────────────────── */
-.app-header {
-  background: var(--header-bg);
-  padding: 16px 16px 0;
+/* ─── MAIN APP ──────────────────────────────────────────────────────────────── */
+#app {
+  display: none;
+  min-height: 100vh;
+  padding-bottom: 40px;
   position: relative;
-  transition: background 0.4s;
+  z-index: 1;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────────────────────────── */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, var(--bg) 0%, transparent 100%);
 }
 
 /* Row 1: player pill + theme toggle */
-.header-top {
+.header-row1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
-}
-.player-switcher {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--switcher-bg);
-  border: 1px solid var(--switcher-border);
-  border-radius: 20px;
-  padding: 6px 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.player-switcher:hover { background: var(--card-bg-hover); }
-.player-switcher span {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text-sub);
+  padding: 16px 16px 10px;
 }
 
-/* Row 2: week pills */
-.week-pills-row {
+.player-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: opacity 0.15s;
+}
+.player-pill:hover { opacity: 0.75; }
+.player-pill .pill-arrow { font-size: 10px; opacity: 0.4; margin-left: 2px; }
+
+.theme-toggle-app {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.theme-toggle-app:hover { background: var(--surface-hover); transform: rotate(20deg); }
+
+/* Row 2: Week pills */
+.header-row2 {
   display: flex;
   gap: 6px;
   overflow-x: auto;
   scrollbar-width: none;
-  padding-bottom: 10px;
+  padding: 0 16px 12px;
   -webkit-overflow-scrolling: touch;
 }
-.week-pills-row::-webkit-scrollbar { display: none; }
+.header-row2::-webkit-scrollbar { display: none; }
 
 .wpill {
   flex-shrink: 0;
-  min-width: 36px;
-  height: 30px;
+  width: 36px;
+  height: 28px;
   border-radius: 8px;
-  border: 1.5px solid var(--card-border);
-  background: var(--card-bg);
-  font-family: 'DM Sans', sans-serif;
+  background: var(--surface);
+  border: 1px solid var(--border);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: var(--text-muted);
+  color: var(--text-dim);
   cursor: pointer;
   transition: all 0.18s;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 0 8px;
 }
 .wpill:hover { border-color: var(--tc); color: var(--text); }
 .wpill.active {
   background: var(--tc);
   border-color: var(--tc);
   color: #fff;
-  transform: scale(1.08);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--tc) 40%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--tc) 33%, transparent);
+}
+.wpill.completed {
+  color: #06D6A0;
+  border-color: rgba(6,214,160,0.35);
+  background: rgba(6,214,160,0.08);
 }
 .wpill .wpill-check {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 13px;
-  height: 13px;
+  top: -4px; right: -4px;
+  width: 12px; height: 12px;
   background: #06D6A0;
   border-radius: 50%;
   font-size: 7px;
@@ -433,22 +360,26 @@ a { transition: 0.18s ease; }
   border: 1.5px solid var(--bg);
 }
 
-/* Row 3: phase label */
-.phase-label-row {
+/* Row 3: Phase label bar */
+.header-row3 {
+  border-top: 2px solid transparent;
+  border-image: radial-gradient(ellipse at 50%, var(--tc), transparent 70%) 1;
+  padding: 8px 16px 10px;
   text-align: center;
-  padding: 6px 0 14px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
+}
+.phase-bar-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
   color: var(--tc);
+  transition: color 0.4s;
 }
 
 /* ─── SLIM PROGRESS BAR ─────────────────────────────────────────────────────── */
 .slim-prog {
   width: 100%;
   height: 3px;
-  background: var(--prog-bar-bg);
+  background: var(--border);
   overflow: hidden;
 }
 .slim-prog-fill {
@@ -457,40 +388,52 @@ a { transition: 0.18s ease; }
   transition: width 0.5s cubic-bezier(.4,0,.2,1);
 }
 
-/* ─── DAY TABS — segmented control ─────────────────────────────────────────── */
+/* ─── DAY TABS ──────────────────────────────────────────────────────────────── */
 .day-tabs {
   display: flex;
-  padding: 12px 16px 12px;
+  padding: 14px 16px 14px;
   gap: 0;
 }
 .dtab {
   flex: 1;
-  padding: 9px 6px;
-  border: 1.5px solid var(--dtab-border);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--dtab-color);
+  height: 44px;
+  border: 1.5px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dim);
   transition: all 0.18s;
-  background: transparent;
+  background: var(--surface);
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dtab:first-child { border-radius: 10px 0 0 10px; }
 .dtab:last-child  { border-radius: 0 10px 10px 0; }
 .dtab:not(:first-child) { border-left: none; }
-.dtab:hover { background: var(--dtab-hover-bg); color: var(--text); }
-.dtab.active { background: var(--tc); border-color: var(--tc); color: #fff; }
-.dtab.done-day { border-color: var(--done-day-border); color: var(--done-day-color); }
+.dtab:hover { background: var(--surface-hover); color: var(--text); }
+.dtab.active {
+  background: var(--tc);
+  border-color: var(--tc);
+  color: #fff;
+  font-weight: 700;
+}
+.dtab.done-day {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--tc) 27%, transparent);
+  color: color-mix(in srgb, var(--tc) 53%, transparent);
+}
 .dtab.done-day::after { content: ' ✓'; opacity: 0.7; }
 
-/* ─── DRILLS ────────────────────────────────────────────────────────────────── */
+/* ─── DRILL CARDS ───────────────────────────────────────────────────────────── */
 .drills-section { padding: 0 16px 12px; }
 .section-hdr {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--section-hdr);
-  margin-bottom: 10px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
 }
 
 @keyframes drillListIn {
@@ -500,53 +443,55 @@ a { transition: 0.18s ease; }
 #drill-list { animation: drillListIn 0.25s ease; }
 
 .drill-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 14px;
-  padding: 13px 13px 13px 10px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: all 0.18s;
-  position: relative;
+  padding: 0;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 8px;
+  transition: all 0.18s;
+  cursor: pointer;
+  will-change: transform;
 }
 .drill-card:hover {
-  background: var(--card-bg-hover);
-  border-color: var(--card-border-hover);
-  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--tc) 40%, transparent);
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--tc) 12%, transparent);
 }
+.drill-card:active { transform: scale(0.99); }
 .drill-card.done {
-  background: var(--done-card-bg);
-  border-color: var(--done-card-border);
+  background: rgba(255,255,255,0.02);
+  border-color: var(--border);
+  border-top-color: var(--border);
   opacity: 0.75;
 }
+[data-theme="light"] .drill-card.done { background: rgba(0,0,0,0.02); }
 
 .drill-top {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 14px;
 }
 
-/* Drill number on left */
+/* Drill number — massive, faint */
 .drill-num {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 42px;
+  font-size: 44px;
   line-height: 1;
-  width: 44px;
+  width: 48px;
   flex-shrink: 0;
   text-align: center;
   color: var(--tc);
-  opacity: var(--drill-num-opacity);
+  opacity: 0.18;
 }
 
 .drill-info { flex: 1; min-width: 0; }
 .drill-name {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
   transition: color 0.18s, opacity 0.18s;
   white-space: nowrap;
   overflow: hidden;
@@ -554,29 +499,24 @@ a { transition: 0.18s ease; }
 }
 .drill-card.done .drill-name {
   text-decoration: line-through;
-  opacity: 0.45;
+  opacity: 0.3;
 }
-
-.drill-dur {
-  font-size: 10px;
+.drill-dur-label {
+  font-size: 11px;
+  color: var(--text-dim);
   font-weight: 700;
-  color: var(--tc);
-  background: color-mix(in srgb, var(--tc) 15%, transparent);
-  padding: 2px 8px;
-  border-radius: 16px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  letter-spacing: 1px;
+  margin-top: 3px;
+  text-transform: uppercase;
 }
+.drill-expand { font-size: 10px; color: var(--text-dim); margin-top: 4px; letter-spacing: 1px; }
 
-.drill-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.drill-expand { font-size: 10px; color: var(--drill-expand-color); margin-top: 4px; text-align: right; letter-spacing: 1px; }
-
-/* Check ring — right side of card */
+/* Check ring */
 .check-ring {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  border: 2px solid var(--check-ring-border);
+  border: 2px solid var(--border-top);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -584,36 +524,46 @@ a { transition: 0.18s ease; }
   font-size: 14px;
   transition: all 0.18s;
   background: transparent;
-  margin-left: auto;
+  margin-left: 4px;
+  will-change: transform;
 }
 .check-ring.checked {
   background: var(--tc);
   border-color: var(--tc);
   color: #fff;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--tc) 40%, transparent);
 }
 
-.drill-tip {
+/* Drill tip — expanded bottom row */
+.drill-tip-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.drill-card.expanded .drill-tip-wrap { max-height: 200px; }
+
+.drill-tip-inner {
+  background: rgba(0,0,0,0.2);
+  border-top: none;
+  border-left: 3px solid var(--tc);
+  padding: 12px 14px 12px 18px;
+}
+[data-theme="light"] .drill-tip-inner { background: rgba(0,0,0,0.04); }
+
+.drill-tip-text {
   font-size: 12px;
   color: var(--text-sub);
-  line-height: 1.5;
-  margin-top: 10px;
-  padding: 10px 12px;
-  background: var(--drill-tip-bg);
-  border-radius: 8px;
-  border-left: 3px solid var(--tc);
+  line-height: 1.6;
   font-style: italic;
-  display: none;
 }
-.drill-card.expanded .drill-tip { display: block; }
-
 .drill-video-link {
   display: inline-block;
   margin-top: 8px;
   padding: 4px 12px;
   border-radius: 20px;
-  background: var(--video-btn-bg);
-  border: 1px solid var(--video-btn-border);
-  color: var(--video-btn-color);
+  background: color-mix(in srgb, var(--tc) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tc) 27%, transparent);
+  color: var(--tc);
   font-size: 11px;
   font-weight: 700;
   font-style: normal;
@@ -626,14 +576,13 @@ a { transition: 0.18s ease; }
   transform: scale(1.04);
 }
 
-/* ─── TIMER ─────────────────────────────────────────────────────────────────── */
-.timer-bar {
-  background: var(--timer-bar-bg);
-  border: 1px solid var(--timer-bar-border);
-  border-radius: 16px;
-  padding: 20px 16px;
-  margin: 0 16px 12px;
-  box-shadow: var(--card-shadow);
+/* ─── TIMER SECTION ─────────────────────────────────────────────────────────── */
+.timer-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 16px;
+  margin-bottom: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -642,122 +591,205 @@ a { transition: 0.18s ease; }
 /* SVG ring wrapper */
 .timer-ring-wrap {
   position: relative;
-  width: 160px;
-  height: 160px;
-  margin-bottom: 12px;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 18px;
 }
-.timer-ring-wrap svg { transform: rotate(-90deg); }
-.timer-digits {
+.timer-ring-svg {
+  transform: rotate(-90deg);
+  display: block;
+}
+
+/* Glow when running */
+.timer-ring-svg.timer-running #timer-ring-progress {
+  filter: drop-shadow(0 0 8px var(--tc));
+}
+
+.timer-center-stack {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 4px;
+}
+.timer-digits {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 44px;
-  letter-spacing: 2px;
+  font-size: 52px;
+  letter-spacing: 3px;
   color: var(--text);
   transition: color 0.3s;
+  line-height: 1;
+}
+.timer-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  text-align: center;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .timer-digits.urgent { color: #FF6B35; }
 .timer-digits.running { color: var(--tc); }
 
-.timer-name {
-  font-size: 13px;
-  color: var(--text-sub);
-  text-align: center;
-  margin-bottom: 16px;
-  min-height: 18px;
-}
-
 .timer-btns {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
 }
 .tbtn {
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 24px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
-  transition: all 0.18s;
+  transition: all 0.15s ease;
 }
-.tbtn-start { background: var(--tc); color: #fff; min-width: 80px; }
+.tbtn-start {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 18px;
+  min-width: 48px;
+  background: var(--tc);
+  color: #fff;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--tc) 40%, transparent);
+}
 .tbtn-start:hover { filter: brightness(1.15); }
-.tbtn-reset { background: var(--tbtn-reset-bg); color: var(--tbtn-reset-color); }
-.tbtn-reset:hover { background: var(--tbtn-reset-hover); }
-.tbtn-next  { background: var(--tbtn-next-bg);  color: var(--tbtn-next-color); }
-.tbtn-next:hover  { background: var(--tbtn-next-hover); }
+.tbtn-reset {
+  background: var(--surface-hover);
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+}
+.tbtn-reset:hover { background: var(--surface); color: var(--text); }
+.tbtn-next  {
+  background: var(--surface-hover);
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+}
+.tbtn-next:hover  { background: var(--surface); color: var(--text); }
+
+.timer-prog-strip {
+  width: 100%;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.timer-prog-fill {
+  height: 100%;
+  background: var(--tc);
+  border-radius: 2px;
+  transition: width 0.5s linear;
+}
 
 /* ─── SHOT TRACKER ──────────────────────────────────────────────────────────── */
-.shot-section { padding: 0 16px 12px; }
+.shot-section { padding: 0 16px 14px; }
+
 .shot-box {
-  background: var(--shot-box-bg);
-  border: 1px solid var(--shot-box-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 16px;
-  padding: 20px 16px 14px;
-  box-shadow: var(--card-shadow);
+  padding: 20px 16px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* SVG donut */
+/* SVG donut — 160px, r=62 */
 .shot-ring-wrap {
   position: relative;
-  width: 120px;
-  height: 120px;
-  margin-bottom: 14px;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 16px;
 }
-.shot-ring-wrap svg { transform: rotate(-90deg); }
-.shot-pct-text {
+.shot-ring-wrap svg {
+  transform: rotate(-90deg);
+  display: block;
+}
+.shot-pct-center {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.shot-pct-text {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
+  font-size: 40px;
   letter-spacing: 1px;
   color: var(--text);
+  line-height: 1;
+}
+.shot-pct-sub {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 3px;
 }
 
-/* Two stats side by side */
+/* Big stat boxes side by side */
 .shot-stats-row {
   display: flex;
-  gap: 32px;
-  margin-bottom: 14px;
+  gap: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+  justify-content: center;
 }
-.shot-stat-item { text-align: center; }
-.shot-stat-item .ss-val {
+.shot-stat-box {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
+  border-radius: 12px;
+  padding: 14px 10px 10px;
+  text-align: center;
+  max-width: 130px;
+}
+.shot-stat-box .ss-val {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
+  font-size: 52px;
   line-height: 1;
-  color: var(--tc);
 }
-.shot-stat-item .ss-lbl {
+.shot-stat-box.makes-box .ss-val { color: var(--tc); }
+.shot-stat-box.attempts-box .ss-val { color: var(--text); }
+.shot-stat-box .ss-lbl {
   font-size: 9px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--text-soft);
-  margin-top: 2px;
+  color: var(--text-dim);
+  margin-top: 4px;
 }
 
+/* Make/Miss buttons */
 .shot-btns {
   display: flex;
-  gap: 8px;
+  gap: 0;
   width: 100%;
+  margin-bottom: 0;
 }
 .sbtn {
   flex: 1;
-  padding: 13px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: all 0.18s;
-  text-align: center;
+  height: 52px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
@@ -778,146 +810,165 @@ a { transition: 0.18s ease; }
 }
 .sbtn-make.rippling::after { animation: ripple 0.5s ease-out forwards; }
 
-.sbtn-make { background: linear-gradient(135deg, #06D6A0, #00a878); color: #fff; }
+.sbtn-make {
+  background: linear-gradient(135deg, #06D6A0, #00a878);
+  color: #fff;
+  border-radius: 12px 0 0 12px;
+}
 .sbtn-make:hover { filter: brightness(1.12); }
-.sbtn-miss { background: var(--sbtn-miss-bg); color: var(--sbtn-miss-color); }
-.sbtn-miss:hover { background: var(--sbtn-miss-hover); }
+.sbtn-miss {
+  background: var(--surface-hover);
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+}
+.sbtn-miss:hover { background: var(--surface); color: var(--text); }
 
-.sbtn-undo-wrap { text-align: center; margin-top: 8px; }
+.sbtn-undo-wrap { text-align: center; margin-top: 10px; }
 .sbtn-undo-link {
   font-size: 11px;
-  color: var(--sbtn-undo-color);
+  color: var(--text-dim);
   cursor: pointer;
   text-decoration: underline;
   background: none;
   border: none;
   transition: color 0.18s;
 }
-.sbtn-undo-link:hover { color: var(--text-muted); }
+.sbtn-undo-link:hover { color: var(--text-sub); }
 
 .pr-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--pr-border);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
   width: 100%;
 }
-.pr-label { font-size: 11px; color: var(--text-soft); letter-spacing: 1px; }
-.pr-val { font-size: 12px; font-weight: 700; color: #FFD23F; }
+.pr-label { font-size: 11px; color: var(--text-sub); letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px; }
+.pr-val { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--ta); letter-spacing: 1px; font-weight: 400; }
 
 /* ─── STREAK CALENDAR ───────────────────────────────────────────────────────── */
-.streak-section { padding: 0 16px 12px; }
+.streak-section { padding: 0 16px 14px; }
 .streak-box {
-  background: var(--shot-box-bg);
-  border: 1px solid var(--shot-box-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 16px;
-  padding: 14px;
-  box-shadow: var(--card-shadow);
+  padding: 16px;
 }
 .streak-months { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
 .streak-months::-webkit-scrollbar { display: none; }
 .streak-week { display: flex; flex-direction: column; gap: 4px; }
 .streak-day-dot {
-  width: 14px; height: 14px;
+  width: 16px; height: 16px;
   border-radius: 3px;
-  background: var(--streak-dot-bg);
+  background: var(--border);
   transition: all 0.2s;
 }
-.streak-day-dot.practiced { background: var(--tc); }
+.streak-day-dot.practiced { background: var(--tc); box-shadow: 0 0 6px color-mix(in srgb, var(--tc) 50%, transparent); }
 .streak-day-dot.today { outline: 2px solid var(--text); outline-offset: 1px; }
-.streak-info { display: flex; justify-content: space-between; margin-top: 12px; }
+.streak-info { display: flex; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
 .si-item { text-align: center; }
-.si-val { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--tc); }
-.si-lbl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-faint); }
+.si-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--tc); line-height: 1; }
+.si-lbl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); margin-top: 3px; }
 
 /* ─── BEEF ──────────────────────────────────────────────────────────────────── */
-.beef-section { padding: 0 16px 12px; }
+.beef-section { padding: 0 16px 14px; }
 .beef-toggle {
   display: flex; justify-content: space-between; align-items: center;
-  cursor: pointer; padding: 12px 16px;
-  background: var(--beef-toggle-bg);
-  border: 1px solid var(--beef-toggle-border);
+  cursor: pointer; padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 12px; transition: all 0.18s;
-  box-shadow: var(--card-shadow);
 }
-.beef-toggle:hover { background: var(--card-bg-hover); }
-.beef-toggle span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-faint); }
+.beef-toggle:hover { background: var(--surface-hover); }
+.beef-toggle span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); font-weight: 700; }
 .beef-toggle .arr { font-size: 11px; color: var(--text-dim); transition: transform 0.2s; }
 .beef-toggle.open .arr { transform: rotate(180deg); }
 .beef-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
-.beef-grid.open { max-height: 400px; }
+.beef-grid.open { max-height: 600px; }
 .beef-card {
-  background: var(--beef-card-bg);
-  border: 1px solid var(--beef-card-border);
-  border-radius: 12px; padding: 14px 12px; text-align: center;
-  box-shadow: var(--card-shadow);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
+  border-radius: 14px; padding: 16px 14px; text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-.beef-letter { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; }
-.beef-word { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; margin: 2px 0 6px; color: var(--text); }
-.beef-desc { font-size: 11px; color: var(--text-sub); line-height: 1.4; }
+.beef-card-watermark {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  line-height: 1;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.06;
+}
+.beef-letter { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; position: relative; z-index: 1; }
+.beef-word { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; margin: 2px 0 6px; color: var(--text); position: relative; z-index: 1; }
+.beef-desc { font-size: 11px; color: var(--text-sub); line-height: 1.4; position: relative; z-index: 1; }
 
 /* ─── PARENT TIPS ───────────────────────────────────────────────────────────── */
-.tips-section { padding: 0 16px 12px; }
+.tips-section { padding: 0 16px 14px; }
 .tips-box {
-  background: var(--tips-box-bg);
-  border: 1px solid var(--tips-box-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 16px; overflow: hidden;
-  box-shadow: var(--card-shadow);
 }
-.tip-row { display: flex; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--tip-row-border); }
+.tip-row { display: flex; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--border); }
 .tip-row:last-child { border-bottom: none; }
 .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-.tip-text strong { display: block; font-size: 12px; font-weight: 700; color: var(--tip-strong); margin-bottom: 2px; }
-.tip-text p { font-size: 11px; color: var(--tip-p); line-height: 1.4; }
+.tip-text strong { display: block; font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.tip-text p { font-size: 11px; color: var(--text-sub); line-height: 1.4; }
 
 /* ─── SHOOTING HISTORY ──────────────────────────────────────────────────────── */
-.history-section { padding: 0 16px 12px; }
+.history-section { padding: 0 16px 14px; }
 .history-toggle {
   display: flex; justify-content: space-between; align-items: center;
-  cursor: pointer; padding: 12px 16px;
-  background: var(--beef-toggle-bg);
-  border: 1px solid var(--beef-toggle-border);
+  cursor: pointer; padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 12px; transition: all 0.18s;
-  box-shadow: var(--card-shadow);
 }
-.history-toggle:hover { background: var(--card-bg-hover); }
-.history-toggle span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-faint); }
+.history-toggle:hover { background: var(--surface-hover); }
+.history-toggle span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); font-weight: 700; }
 .history-toggle .arr { font-size: 11px; color: var(--text-dim); transition: transform 0.2s; }
 .history-toggle.open .arr { transform: rotate(180deg); }
 .history-body {
   overflow: hidden; max-height: 0; transition: max-height 0.3s ease;
-  background: var(--beef-card-bg);
-  border: 1px solid var(--beef-card-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-top: none;
   border-radius: 0 0 12px 12px;
 }
 .history-body.open { max-height: 600px; overflow-y: auto; }
 .history-row {
   display: flex; align-items: center; gap: 10px;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--tip-row-border);
-  font-size: 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
   font-variant-numeric: tabular-nums;
 }
 .history-row:last-child { border-bottom: none; }
-.history-date { color: var(--text-sub); font-weight: 700; min-width: 46px; flex-shrink: 0; font-family: 'DM Sans', monospace; }
-.history-phase { color: var(--text-muted); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
-.history-makes { color: var(--text); font-weight: 700; white-space: nowrap; flex-shrink: 0; font-size: 11px; font-family: 'DM Sans', monospace; }
-.history-pct { font-weight: 700; font-size: 12px; min-width: 36px; text-align: right; flex-shrink: 0; }
+.history-date { font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: var(--text); min-width: 52px; flex-shrink: 0; line-height: 1; }
+.history-phase { color: var(--text-dim); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
+.history-makes { color: var(--text); font-weight: 700; white-space: nowrap; flex-shrink: 0; font-size: 11px; font-variant-numeric: tabular-nums; }
+.history-pct { font-family: 'Bebas Neue', sans-serif; font-size: 18px; min-width: 42px; text-align: right; flex-shrink: 0; line-height: 1; }
 .history-pct.green { color: #06D6A0; }
 .history-pct.orange { color: #FFD23F; }
 .history-pct.red { color: #E63946; }
-.history-empty { padding: 18px 14px; color: var(--text-dim); font-size: 12px; text-align: center; letter-spacing: 0.5px; }
-.history-del { flex-shrink: 0; font-size: 10px; color: rgba(255,255,255,0.2); background: none; border: none; cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: color 0.15s; }
+.history-empty { padding: 20px 16px; color: var(--text-dim); font-size: 12px; text-align: center; letter-spacing: 0.5px; }
+.history-del { flex-shrink: 0; font-size: 10px; color: var(--text-dim); background: none; border: none; cursor: pointer; padding: 3px 5px; border-radius: 4px; transition: color 0.15s; }
 .history-del:hover { color: #E63946; }
-[data-theme="light"] .history-del { color: rgba(0,0,0,0.2); }
 
-/* ─── CONFETTI ──────────────────────────────────────────────────────────────── */
+/* ─── CONFETTI & TOAST ──────────────────────────────────────────────────────── */
 #confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 999; display: none; }
-
-/* ─── SESSION TOAST ─────────────────────────────────────────────────────────── */
 .session-toast {
   position: fixed; bottom: 20px; left: 50%;
   transform: translateX(-50%) translateY(100px);
@@ -928,35 +979,19 @@ a { transition: 0.18s ease; }
   white-space: nowrap; box-shadow: 0 8px 30px rgba(6,214,160,0.4);
 }
 .session-toast.show { transform: translateX(-50%) translateY(0); }
-.footer { text-align: center; padding: 12px 20px 32px; font-size: 11px; color: var(--footer-color); letter-spacing: 1px; }
 
-/* streak badge in header */
-.streak-badge {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--streak-bg);
-  border: 1px solid var(--streak-border);
-  border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 12px;
-}
-.streak-badge .streak-num { font-weight: 700; color: #FFD23F; }
+.footer { text-align: center; padding: 14px 20px 36px; font-size: 11px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; }
 </style>
 </head>
 <body>
 
 <!-- ═══════════════ PLAYER SELECT SCREEN ════════════════ -->
 <div id="player-screen">
-  <!-- Floating basketballs -->
-  <span class="bg-ball" aria-hidden="true">🏀</span>
-  <span class="bg-ball" aria-hidden="true">🏀</span>
-  <span class="bg-ball" aria-hidden="true">🏀</span>
-
   <div class="ps-who">WHO'S TRAINING TODAY?</div>
+  <span class="ps-ball-3">🏀</span>
 
   <div class="ps-theme-btn">
-    <button class="theme-toggle" id="theme-toggle-select" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
+    <button class="theme-toggle-ps" id="theme-toggle-select" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
   </div>
 
   <!-- Ethan half -->
@@ -969,7 +1004,9 @@ a { transition: 0.18s ease; }
     </div>
   </div>
 
+  <!-- Center divider -->
   <div class="ps-divider" aria-hidden="true"></div>
+  <span class="ps-divider-ball" aria-hidden="true">🏀</span>
 
   <!-- Justin half -->
   <div class="ps-half ps-half-justin" onclick="selectPlayer('justin')">
@@ -987,59 +1024,64 @@ a { transition: 0.18s ease; }
   <canvas id="confetti-canvas"></canvas>
   <div class="session-toast" id="toast">🎉 Session Complete! Keep grinding!</div>
 
-  <!-- Header -->
+  <!-- ── HEADER ── -->
   <div class="app-header">
     <!-- Row 1: player pill + theme toggle -->
-    <div class="header-top">
-      <button class="player-switcher" onclick="backToSelect()">
+    <div class="header-row1">
+      <button class="player-pill" onclick="backToSelect()">
         <span id="player-icon">⚡</span>
         <span id="player-name-hdr">ETHAN</span>
-        <span style="font-size:10px;opacity:0.4;margin-left:2px">▾</span>
+        <span class="pill-arrow">▾</span>
       </button>
-      <div class="streak-badge">
-        <span>🔥</span>
-        <span class="streak-num" id="streak-count">0</span>
-        <span style="font-size:10px;opacity:0.5;font-weight:500"> streak</span>
-      </div>
-      <button class="theme-toggle" id="theme-toggle-app" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
+      <button class="theme-toggle-app" id="theme-toggle-app" onclick="toggleTheme()" title="Toggle theme">🌙</button>
     </div>
 
-    <!-- Row 2: week pills -->
-    <div class="week-pills-row" id="week-tabs"></div>
+    <!-- Row 2: Week pills -->
+    <div class="header-row2" id="week-tabs"></div>
 
-    <!-- Row 3: phase label -->
-    <div class="phase-label-row" id="phase-label-row">WEEK 1 · BALL HANDLING BASICS</div>
+    <!-- Row 3: Phase label bar -->
+    <div class="header-row3">
+      <div class="phase-bar-label" id="phase-name">WEEK 1 · BALL HANDLING BASICS</div>
+      <div id="phase-tagline" style="display:none"></div>
+    </div>
   </div>
 
-  <!-- Slim progress bar -->
+  <!-- 3px progress strip -->
   <div class="slim-prog"><div class="slim-prog-fill" id="prog-fill" style="width:0%"></div></div>
+  <span id="prog-pct" style="display:none"></span>
+  <span id="prog-label" style="display:none"></span>
 
   <!-- Day tabs -->
   <div class="day-tabs" id="day-tabs"></div>
 
-  <!-- Timer -->
-  <div class="timer-bar">
+  <!-- Timer Section -->
+  <div class="timer-section">
     <div class="timer-ring-wrap">
-      <svg width="160" height="160" viewBox="0 0 160 160">
-        <!-- background ring -->
-        <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+      <svg id="timer-ring-svg" class="timer-ring-svg" width="180" height="180" viewBox="0 0 180 180">
+        <!-- background ring: r=78, circumference=490.1 -->
+        <circle cx="90" cy="90" r="78" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="6"/>
         <!-- progress ring -->
-        <circle id="timer-ring-progress" cx="80" cy="80" r="72"
+        <circle id="timer-ring-progress" cx="90" cy="90" r="78"
           fill="none"
           stroke="var(--tc)"
           stroke-width="6"
           stroke-linecap="round"
-          stroke-dasharray="452.4"
+          stroke-dasharray="490.1"
           stroke-dashoffset="0"
           style="transition: stroke-dashoffset 0.5s linear, stroke 0.4s ease;"/>
       </svg>
-      <div class="timer-digits" id="timer-display">00:00</div>
+      <div class="timer-center-stack">
+        <div class="timer-digits" id="timer-display">00:00</div>
+        <div class="timer-sub" id="timer-drill-name">Select a drill</div>
+      </div>
     </div>
-    <div class="timer-name" id="timer-drill-name">Select a drill to start</div>
     <div class="timer-btns">
-      <button class="tbtn tbtn-start" id="tbtn-start" onclick="timerStartStop()">START</button>
-      <button class="tbtn tbtn-reset" onclick="timerReset()">RESET</button>
+      <button class="tbtn tbtn-reset" onclick="timerReset()">↺ RESET</button>
+      <button class="tbtn tbtn-start" id="tbtn-start" onclick="timerStartStop()">▶</button>
       <button class="tbtn tbtn-next" onclick="timerNextDrill()">NEXT ›</button>
+    </div>
+    <div class="timer-prog-strip">
+      <div class="timer-prog-fill" id="timer-prog-fill" style="width:0%"></div>
     </div>
   </div>
 
@@ -1051,31 +1093,34 @@ a { transition: 0.18s ease; }
 
   <!-- Shot Tracker -->
   <div class="shot-section">
-    <div class="section-hdr">🎯 Shot Tracker</div>
+    <div class="section-hdr">🎯 SHOT TRACKER</div>
     <div class="shot-box">
-      <!-- donut -->
+      <!-- donut — 160px, r=62, circumference=389.6 -->
       <div class="shot-ring-wrap">
-        <svg width="120" height="120" viewBox="0 0 120 120">
-          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
-          <circle id="shot-ring-progress" cx="60" cy="60" r="52"
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="62" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="10"/>
+          <circle id="shot-ring-progress" cx="80" cy="80" r="62"
             fill="none"
             stroke="#06D6A0"
             stroke-width="10"
             stroke-linecap="round"
-            stroke-dasharray="326.7"
-            stroke-dashoffset="326.7"
-            style="transition: stroke-dashoffset 0.4s ease;"/>
+            stroke-dasharray="389.6"
+            stroke-dashoffset="389.6"
+            style="transition: stroke-dashoffset 0.4s ease, stroke 0.4s ease;"/>
         </svg>
-        <div class="shot-pct-text" id="st-pct">—</div>
+        <div class="shot-pct-center">
+          <div class="shot-pct-text" id="st-pct">—</div>
+          <div class="shot-pct-sub">Shooting %</div>
+        </div>
       </div>
 
-      <!-- Two stats -->
+      <!-- Big stat boxes -->
       <div class="shot-stats-row">
-        <div class="shot-stat-item">
+        <div class="shot-stat-box makes-box">
           <div class="ss-val" id="st-makes">0</div>
           <div class="ss-lbl">Makes</div>
         </div>
-        <div class="shot-stat-item">
+        <div class="shot-stat-box attempts-box">
           <div class="ss-val" id="st-attempts">0</div>
           <div class="ss-lbl">Attempts</div>
         </div>
@@ -1092,7 +1137,7 @@ a { transition: 0.18s ease; }
 
       <!-- PR row -->
       <div class="pr-row">
-        <span class="pr-label">🏆 Personal Record (session)</span>
+        <span class="pr-label">🏆 Personal Record</span>
         <span class="pr-val" id="pr-val">—</span>
       </div>
     </div>
@@ -1111,7 +1156,7 @@ a { transition: 0.18s ease; }
 
   <!-- Streak Calendar -->
   <div class="streak-section">
-    <div class="section-hdr">📅 Practice Streak</div>
+    <div class="section-hdr">📅 PRACTICE STREAK</div>
     <div class="streak-box">
       <div class="streak-months" id="streak-cal"></div>
       <div class="streak-info">
@@ -1122,24 +1167,47 @@ a { transition: 0.18s ease; }
     </div>
   </div>
 
+  <!-- streak-count hidden span kept for JS compatibility -->
+  <span id="streak-count" style="display:none">0</span>
+
   <!-- BEEF -->
   <div class="beef-section">
-    <div class="section-hdr">🍪 The BEEF Formula</div>
+    <div class="section-hdr">🍪 THE BEEF FORMULA</div>
     <div class="beef-toggle" id="beef-toggle" onclick="toggleBeef()">
       <span>Balance · Eyes · Elbow · Follow Through</span>
       <span class="arr">▼</span>
     </div>
     <div class="beef-grid" id="beef-grid">
-      <div class="beef-card"><div class="beef-letter" style="color:#FF6B35;text-shadow:0 0 20px #FF6B3555">B</div><div class="beef-word">Balance</div><div class="beef-desc">Feet shoulder-width apart, knees slightly bent before every shot.</div></div>
-      <div class="beef-card"><div class="beef-letter" style="color:#E63946;text-shadow:0 0 20px #E6394655">E</div><div class="beef-word">Eyes</div><div class="beef-desc">Lock on a spot on the rim before you shoot. Don't watch the ball.</div></div>
-      <div class="beef-card"><div class="beef-letter" style="color:#7209B7;text-shadow:0 0 20px #7209B755">E</div><div class="beef-word">Elbow</div><div class="beef-desc">Shooting elbow tucked under the ball, pointing at the basket.</div></div>
-      <div class="beef-card"><div class="beef-letter" style="color:#06D6A0;text-shadow:0 0 20px #06D6A055">F</div><div class="beef-word">Follow Through</div><div class="beef-desc">Reach into the cookie jar — hold your hand up until it goes in.</div></div>
+      <div class="beef-card">
+        <div class="beef-card-watermark" style="color:#FF6B35">B</div>
+        <div class="beef-letter" style="color:#FF6B35;text-shadow:0 0 20px #FF6B3555">B</div>
+        <div class="beef-word">Balance</div>
+        <div class="beef-desc">Feet shoulder-width apart, knees slightly bent before every shot.</div>
+      </div>
+      <div class="beef-card">
+        <div class="beef-card-watermark" style="color:#E63946">E</div>
+        <div class="beef-letter" style="color:#E63946;text-shadow:0 0 20px #E6394655">E</div>
+        <div class="beef-word">Eyes</div>
+        <div class="beef-desc">Lock on a spot on the rim before you shoot. Don't watch the ball.</div>
+      </div>
+      <div class="beef-card">
+        <div class="beef-card-watermark" style="color:#7209B7">E</div>
+        <div class="beef-letter" style="color:#7209B7;text-shadow:0 0 20px #7209B755">E</div>
+        <div class="beef-word">Elbow</div>
+        <div class="beef-desc">Shooting elbow tucked under the ball, pointing at the basket.</div>
+      </div>
+      <div class="beef-card">
+        <div class="beef-card-watermark" style="color:#06D6A0">F</div>
+        <div class="beef-letter" style="color:#06D6A0;text-shadow:0 0 20px #06D6A055">F</div>
+        <div class="beef-word">Follow Through</div>
+        <div class="beef-desc">Reach into the cookie jar — hold your hand up until it goes in.</div>
+      </div>
     </div>
   </div>
 
   <!-- Parent Tips -->
   <div class="tips-section">
-    <div class="section-hdr">📋 Parent Reminders</div>
+    <div class="section-hdr">📋 PARENT REMINDERS</div>
     <div class="tips-box">
       <div class="tip-row"><div class="tip-icon">👈</div><div class="tip-text"><strong>Left hand matters</strong><p>He'll resist it. Do it anyway. This is the biggest separator at youth level.</p></div></div>
       <div class="tip-row"><div class="tip-icon">🔢</div><div class="tip-text"><strong>Count made shots</strong><p>Kids respond to personal records. Beat yesterday's number — that's all that matters.</p></div></div>
@@ -1512,9 +1580,9 @@ function renderWeekTabs() {
     const totalDrills = w.days.reduce((s,d) => s + d.drills.length, 0);
     const doneDrills  = w.days.reduce((s,d,di) => s + d.drills.filter((_,dri) => pd().completed[dKey(i,di,dri)]).length, 0);
     const weekDone = totalDrills > 0 && doneDrills === totalDrills;
-    return `<button class="wpill${isActive?' active':''}" style="--tc:${w.color}" onclick="selectWeek(${i})">
-      W${i+1}
-      ${weekDone ? '<span class="wpill-check">✓</span>' : ''}
+    return `<button class="wpill${isActive?' active':''}${weekDone&&!isActive?' completed':''}" style="${isActive?'':'--tc:'+w.color}" onclick="selectWeek(${i})">
+      ${weekDone && !isActive ? '✓' : 'W'+(i+1)}
+      ${weekDone && !isActive ? '' : ''}
     </button>`;
   }).join('');
 }
@@ -1523,8 +1591,12 @@ function renderPhase() {
   const w = WEEKS[activeWeek];
   document.documentElement.style.setProperty('--tc', w.color);
   document.documentElement.style.setProperty('--ta', w.accent);
-  // Update timer ring stroke color via CSS var (already uses var(--tc))
-  document.getElementById('phase-label-row').textContent = `WEEK ${activeWeek + 1} · ${w.theme.toUpperCase()}`;
+  // Update phase bar label
+  const phaseEl = document.getElementById('phase-name');
+  if (phaseEl) phaseEl.textContent = `WEEK ${activeWeek + 1} · ${w.theme.toUpperCase()}`;
+  // Update timer start button text if running
+  const tbtn = document.getElementById('tbtn-start');
+  if (tbtn) tbtn.textContent = timerRunning ? '⏸' : '▶';
 }
 
 function renderDayTabs() {
@@ -1539,7 +1611,7 @@ function renderDayTabs() {
 function renderDrills() {
   const drills = WEEKS[activeWeek].days[activeDay].drills;
   const totalMin = drills.reduce((s,d)=>s+d.dur,0);
-  document.getElementById('drill-section-hdr').textContent = `Today's Drills — ${totalMin} min total`;
+  document.getElementById('drill-section-hdr').textContent = `TODAY'S DRILLS — ${totalMin} MIN TOTAL`;
   const el = document.getElementById('drill-list');
   el.style.animation = 'none';
   el.offsetHeight;
@@ -1553,20 +1625,19 @@ function renderDrills() {
       <div class="drill-top">
         <div class="drill-num">${num}</div>
         <div class="drill-info">
-          <div class="drill-meta">
-            <div class="drill-name">${d.icon} ${d.name}</div>
-            <div class="drill-dur">${d.dur} min</div>
-          </div>
-          <div class="drill-expand">${expanded?'▲ hide tip':'▾ tip'}</div>
+          <div class="drill-name">${d.icon} ${d.name}</div>
+          <div class="drill-dur-label">${d.dur} MIN</div>
+          <div class="drill-expand">${expanded?'▲ hide tip':'▾ coaching tip'}</div>
         </div>
         <div class="check-ring${done?' checked':''}" onclick="event.stopPropagation();markDrillDone(${i})">
           ${done?'✓':''}
         </div>
       </div>
-      <div class="drill-tip">
-        ${d.tip}
-        <br/>
-        <a href="${videoUrl}" target="_blank" rel="noopener" class="drill-video-link" onclick="event.stopPropagation()">▶ Watch</a>
+      <div class="drill-tip-wrap">
+        <div class="drill-tip-inner">
+          <div class="drill-tip-text">${d.tip}</div>
+          <a href="${videoUrl}" target="_blank" rel="noopener" class="drill-video-link" onclick="event.stopPropagation()">▶ Watch</a>
+        </div>
       </div>
     </div>`;
   }).join('');
@@ -1651,8 +1722,9 @@ function timerStartStop() {
 
 function startTimer() {
   timerRunning = true;
-  document.getElementById('tbtn-start').textContent = 'PAUSE';
+  document.getElementById('tbtn-start').textContent = '⏸';
   document.getElementById('timer-display').classList.add('running');
+  document.getElementById('timer-ring-svg').classList.add('timer-running');
   timerInterval = setInterval(() => {
     timerSeconds--;
     if (timerSeconds <= 0) {
@@ -1668,8 +1740,10 @@ function startTimer() {
 function stopTimer() {
   timerRunning = false;
   clearInterval(timerInterval);
-  document.getElementById('tbtn-start').textContent = 'START';
+  document.getElementById('tbtn-start').textContent = '▶';
   document.getElementById('timer-display').classList.remove('running');
+  const svg = document.getElementById('timer-ring-svg');
+  if (svg) svg.classList.remove('timer-running');
 }
 
 function timerReset() {
@@ -1689,13 +1763,19 @@ function timerNextDrill() {
 }
 
 function updateTimerRing() {
-  const circumference = 452.4; // 2 * PI * 72
+  const circumference = 490.1; // 2 * PI * 78
   const ring = document.getElementById('timer-ring-progress');
   if (!ring) return;
   const offset = timerTotal > 0
     ? circumference * (1 - timerSeconds / timerTotal)
     : 0;
   ring.style.strokeDashoffset = offset;
+  // Update thin progress strip
+  const strip = document.getElementById('timer-prog-fill');
+  if (strip) {
+    const pct = timerTotal > 0 ? ((timerTotal - timerSeconds) / timerTotal) * 100 : 0;
+    strip.style.width = pct + '%';
+  }
 }
 
 function updateTimerDisplay() {
@@ -1703,7 +1783,7 @@ function updateTimerDisplay() {
   const s = (timerSeconds%60).toString().padStart(2,'0');
   const el = document.getElementById('timer-display');
   el.textContent = `${m}:${s}`;
-  const isRunning = el.classList.contains('running');
+  const isRunning = timerRunning;
   el.className = 'timer-digits' +
     (isRunning ? ' running' : '') +
     (timerSeconds<=10 && timerSeconds>0 ? ' urgent' : '');
@@ -1723,12 +1803,17 @@ function playBeep() {
 
 // ─── SHOT TRACKER ───────────────────────────────────────────────────────────
 function updateShotRing() {
-  const circumference = 326.7; // 2 * PI * 52
+  const circumference = 389.6; // 2 * PI * 62
   const ring = document.getElementById('shot-ring-progress');
   if (!ring) return;
   const pct = shotAttempts > 0 ? Math.round((shotMakes / shotAttempts) * 100) : 0;
-  const offset = circumference * (1 - pct / 100);
+  const offset = shotAttempts > 0 ? circumference * (1 - pct / 100) : circumference;
   ring.style.strokeDashoffset = offset;
+  // Color based on percentage
+  if (shotAttempts > 0) {
+    const color = pct >= 50 ? '#06D6A0' : pct >= 30 ? '#FFD23F' : '#E63946';
+    ring.style.stroke = color;
+  }
 }
 
 function upsertShotLog() {
@@ -1756,7 +1841,7 @@ function recordShot(make) {
     btn.classList.add('rippling');
     setTimeout(()=>btn.classList.remove('rippling'), 600);
   }
-  upsertShotLog();
+  upshotLog();
   updateShotDisplay();
 }
 
@@ -1878,6 +1963,9 @@ function showToast() {
 }
 
 // ─── INIT ───────────────────────────────────────────────────────────────────
+// Fix: alias upshotLog -> upsertShotLog (typo guard)
+function upshotLog() { upsertShotLog(); }
+
 loadData().then(()=>{
   // show player select
 });
